@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="${contextPath}/plugin/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link  rel="icon" href="${contextPath}/favicon.ico"/>
+<title>Twitter Bootstrap Tutorial - A responsive layout tutorial</title>
+    <style type='text/css'>
+      body {
+        background-color: #CCC;
+      }
+      #content{
+      	background-color: #FFF;
+      	border-radius: 5px;
+      }
+      #content .main {
+        padding: 20px;
+      }
+      #content .sidebar{
+      	padding: 10px;
+      }
+      #content p{
+      	line-height: 30px;
+      }
+
+    </style>
+</head>
+<body>
+	<div class="container" >
+		<h1>TWITTER BOOTSTRAP TUTORIAL</h1>	
+		<div class="navbar navbar-inverse">
+			<!-- <div class="nav-lollapse" style="height: auto;"> -->
+  			<div class="navbar-inner nav-collapse" style="height: auto;">
+				<ul class="nav">
+					<li class="active"><a href="#">Home</a></li>
+					<li><a href="#">Page One</a></li>
+					<li><a href="#">Page Two</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="content" class="row-fluid" >
+			<div class="span9 main">
+				<h2>Main Content Section</h2>
+				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
+					diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam
+					erat volutpat. </p>
+
+				<p>Typi non habent claritatem insitam; est usus legentis in iis
+					qui facit eorum claritatem.</p>
+			</div>
+			<div class="span3 sidebar">
+				<h2>Sidebar</h2>
+				<ul class="nav nav-tabs nav-stacked">
+					<li><a href="#">Another Link 1</a></li>
+					<li><a href="#">Another Link 2</a></li>
+					<li><a href="#">Another Link 3</a></li>
+				</ul>
+			</div>
+		</div>
+	
+	</div>
+
+
+	<!-- <h1>Hello,world!</h1>
+	<script src="http://code.jquery.com/jquery.js"></script>
+	<script src="${contextPath}/plugin/bootstrap/js/bootstrap.min.js"></script> -->
+</body>
+</html>
