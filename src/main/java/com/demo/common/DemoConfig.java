@@ -18,6 +18,7 @@ import com.jfinal.ext.handler.ContextPathHandler;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
 import com.jfinal.plugin.ehcache.EhCachePlugin;
+import com.jfinal.render.ViewType;
 
 /**
  * API引导式配置
@@ -31,6 +32,7 @@ public class DemoConfig extends JFinalConfig {
 		// 加载少量必要配置，随后可用getProperty(...)获取值
 		loadPropertyFile("a_little_config.txt");
 		me.setDevMode(getPropertyToBoolean("devMode", false));
+		me.setViewType(ViewType.FREE_MARKER);
 	}
 	
 	/**

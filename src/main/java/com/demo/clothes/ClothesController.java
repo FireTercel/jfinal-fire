@@ -27,13 +27,11 @@ public class ClothesController extends Controller {
 	}
 
 	public void clothbootstrap() {
-		String sql = "select ci.* ,c.clothname from clothimage ci inner join"
-				+ " clothes c on ci.clothes_id=c.id where ci.clothes_id=?";
-		Clothimage clothimage=Clothimage.dao.findFirst(sql, 5);
-		if(clothimage!=null){
-			String clothname=clothimage.getStr("clothname");
-			System.out.println(clothname);
+		List<Clothimage> clothimagelist=Clothes.dao.getClothimage();
+		for (Clothimage clothimage : clothimagelist) {
+			System.out.println(clothimage);
 		}
+		
 		render("clothbootstrap.html");
 	}
 

@@ -13,5 +13,9 @@ public class BootstrapController extends Controller {
 		
 		render("bootstrap.html");
 	}
+	
+	public void theme(){
+		render("theme.html");
+	}
 
 }

@@ -24,5 +24,9 @@ public class Clothes extends Model<Clothes> {
 		Clothes list=dao.findById(Clothes.dao.set("id", 1));
 		return list;
 	}
+	
+	public List<Clothimage> getClothimage(){
+		return Clothimage.dao.find("select * from clothimage where clothes_id=?",get("id"));
+	}
 
 }
