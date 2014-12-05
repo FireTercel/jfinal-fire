@@ -7,6 +7,8 @@ import com.demo.clothes.Clothes;
 import com.demo.clothes.ClothesController;
 import com.demo.clothes.Clothimage;
 import com.demo.index.IndexController;
+import com.demo.workmate.Workmate;
+import com.demo.workmate.WorkmateController;
 import com.jfinal.config.Constants;
 import com.jfinal.config.Handlers;
 import com.jfinal.config.Interceptors;
@@ -43,6 +45,7 @@ public class DemoConfig extends JFinalConfig {
 		me.add("/", IndexController.class, "/page/index");	// 第三个参数为该Controller的视图存放路径
 		me.add("/blog", BlogController.class,"/page/blog");			// 第三个参数省略时默认与第一个参数值相同，在此即为 "/blog"
 		me.add("/clothes",ClothesController.class,"/page/clothes");
+		me.add("/workmate", WorkmateController.class, "/page/workmate");
 		me.add("/bootstrap",BootstrapController.class,"/page/bootstrap");
 	}
 	
@@ -60,6 +63,7 @@ public class DemoConfig extends JFinalConfig {
 		arp.addMapping("blog", Blog.class);	// 映射blog 表到 Blog模型
 		arp.addMapping("clothes", Clothes.class);// 映射clohtes 表到 Clothes模型
 		arp.addMapping("clothimage", Clothimage.class);
+		arp.addMapping("workmate", Workmate.class);
 		
 		me.add(new EhCachePlugin());
 	}

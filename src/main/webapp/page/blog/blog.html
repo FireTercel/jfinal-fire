@@ -1,10 +1,13 @@
 <#include "/page/common/_layout.html"/>
 <@layout>
-<h1>Blog管理&nbsp;&nbsp;
+<div class="page-header">
+<h2>Blog管理&nbsp;&nbsp;
 <a href="${contextPath}/blog/add">创建Blog</a>
-</h1>
+</h2>
+</div>
+
 <div class="table_box">
-	<table class="list">
+	<table class="table table-striped">
 		<tbody>
 			<tr>
 				<th width="4%">id</th>
@@ -27,4 +30,5 @@
 	<#include "/page/common/_paginate.html" />
 	<@paginate currentPage=blogPage.pageNumber totalPage=blogPage.totalPage actionUrl="/blog/" />
 </div>
+
 </@layout>
