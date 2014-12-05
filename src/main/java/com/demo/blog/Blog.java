@@ -1,4 +1,4 @@
-package com.demo.blog;
+﻿package com.demo.blog;
 
 import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Page;
@@ -12,7 +12,7 @@ mysql> desc blog;
 | Field   | Type         | Null | Key | Default | Extra          |
 +---------+--------------+------+-----+---------+----------------+
 | id      | int(11)      | NO   | PRI | NULL    | auto_increment |
-| title   | varchar(200) | NO   |     | NULL    |                |
+| title   | varchar(200) | NO   |     | NULL    |   1            |
 | content | mediumtext   | NO   |     | NULL    |                |
 +---------+--------------+------+-----+---------+----------------+
 
