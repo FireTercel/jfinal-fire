@@ -1,26 +1,53 @@
 <#macro layout>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xml:lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="autor" content="">
 <link href="${contextPath}/plugin/jfinal/css/manage.css" media="screen" rel="stylesheet" type="text/css" />
 <link  rel="icon" href="${contextPath}/favicon.ico"/>
 <script src="${contextPath}/plugin/jfinal/js/jquery-1.4.4.min.js" type="text/javascript" ></script>
+<link href="${contextPath}/plugin/bootstrap-dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<title>JFinal Demo</title>
+<style type='text/css'>
+body {
+	padding-top: 50px;
+}
+.starter-template {
+	padding: 40px 15px;
+	text-align: center;
+}
+</style>
 <#-- base href="${CPATH}" / -->
 </head>
 <body>
-	<div class="manage_container">
-		<div class="manage_head">
-			<div class="manage_logo"><a href="http://www.jfinal.com">JFinal web framework</a></div>
-			<div id="nav">
-				<ul>
-					<li><a href="${contextPath}/"><b>首页</b></a></li>
-					<li><a href="${contextPath}/blog"><b>Blog管理</b></a></li>
-					<li><a href="${contextPath}/clothes"><b>Clothes管理</b></a></li>
-					<li><a href="${contextPath}/bootstrap"><b>Bootstrap管理</b></a></li>
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" date-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Project name</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="${contextPath}/">首页</a></li>
+					<li><a href="${contextPath}/blog">Blog管理</a></li>
+					<li><a href="${contextPath}/clothes">Clothes管理</a></li>
+					<li><a href="${contextPath}/bootstrap">Bootstrap管理</a></li>
 				</ul>
 			</div>
 		</div>
+	</nav>
+	<div class="manage_container">
+		
 		<div class="main">
 			<#nested>
 		</div>

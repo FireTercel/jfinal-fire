@@ -2964,3 +2964,41 @@ Caused by: java.io.FileNotFoundException: Template "/page/clothes/edit.html" not
 
 2014-12-03 01:34:41
 [WARN]-[Thread: http-8080-1]-[com.jfinal.core.ActionHandler.handle()]: 404 Action Not Found: /clothes/clothes/save
+
+2014-12-05 20:55:04
+[ERROR]-[Thread: http-8080-2]-[com.jfinal.core.ActionHandler.handle()]: /bootstrap
+com.jfinal.render.RenderException: freemarker.core.ParseException: Parsing error in template "page/bootstrap/bootstrap.html" in line 18, column 7:
+Unclosed @... when the end of the file was reached.
+	at com.jfinal.render.FreeMarkerRender.render(FreeMarkerRender.java:130)
+	at com.jfinal.core.ActionHandler.handle(ActionHandler.java:92)
+	at com.jfinal.ext.handler.ContextPathHandler.handle(ContextPathHandler.java:47)
+	at com.jfinal.core.JFinalFilter.doFilter(JFinalFilter.java:72)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:233)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:191)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:298)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:857)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:588)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:489)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: freemarker.core.ParseException: Parsing error in template "page/bootstrap/bootstrap.html" in line 18, column 7:
+Unclosed @... when the end of the file was reached.
+	at freemarker.core.FMParser.generateParseException(FMParser.java:4672)
+	at freemarker.core.FMParser.jj_consume_token(FMParser.java:4543)
+	at freemarker.core.FMParser.UnifiedMacroTransform(FMParser.java:1954)
+	at freemarker.core.FMParser.FreemarkerDirective(FMParser.java:2374)
+	at freemarker.core.FMParser.Content(FMParser.java:2593)
+	at freemarker.core.FMParser.OptionalBlock(FMParser.java:2761)
+	at freemarker.core.FMParser.Root(FMParser.java:2933)
+	at freemarker.template.Template.<init>(Template.java:193)
+	at freemarker.cache.TemplateCache.loadTemplate(TemplateCache.java:419)
+	at freemarker.cache.TemplateCache.getTemplate(TemplateCache.java:330)
+	at freemarker.cache.TemplateCache.getTemplate(TemplateCache.java:205)
+	at freemarker.template.Configuration.getTemplate(Configuration.java:740)
+	at freemarker.template.Configuration.getTemplate(Configuration.java:665)
+	at com.jfinal.render.FreeMarkerRender.render(FreeMarkerRender.java:126)
+	... 15 more
