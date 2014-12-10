@@ -23,6 +23,7 @@ public class ClothesValidator extends Validator {
 			e.printStackTrace();
 		}
 		
+		
 
 	}
 

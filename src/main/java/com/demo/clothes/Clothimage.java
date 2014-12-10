@@ -3,5 +3,9 @@ package com.demo.clothes;
 import com.jfinal.plugin.activerecord.Model;
 
 public class Clothimage extends Model<Clothimage> {
-	public static final Clothimage dao=new Clothimage();
+	public static Clothimage dao=new Clothimage();
+	
+	public Clothes getClothes(){
+		return Clothes.dao.findById(get("clothesid"));
+	}
 }

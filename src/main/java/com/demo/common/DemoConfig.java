@@ -35,6 +35,8 @@ public class DemoConfig extends JFinalConfig {
 		loadPropertyFile("a_little_config.txt");
 		me.setDevMode(getPropertyToBoolean("devMode", false));
 		me.setViewType(ViewType.FREE_MARKER);
+		//me.setError404View("error404.html");
+		//me.setError500View("error500.html");
 	}
 	
 	/**

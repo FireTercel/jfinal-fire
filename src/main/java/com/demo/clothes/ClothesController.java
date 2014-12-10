@@ -21,16 +21,17 @@ public class ClothesController extends Controller {
 	@Before(CacheInterceptor.class)
 	@CacheName("/clothes/list")
 	public void list() {
-		List<Clothes> clotheslist = Clothes.dao.find("select * from clothes");
-		setAttr("clotheslist", clotheslist);
-		render("clothbootstrap.html");
+		Clothes clothes=Clothes.dao.findById(getParaToInt());
+		
+		List<Clothimage> clothimagelist=clothes.getClothimages();
+		
+		setAttr("clotheslist",clothes);
+		setAttr("clothimagelist", clothimagelist);
+		render("clothimagelist.html");
 	}
 
 	public void clothbootstrap() {
-		List<Clothimage> clothimagelist=Clothes.dao.getClothimage();
-		for (Clothimage clothimage : clothimagelist) {
-			System.out.println(clothimage);
-		}
+		
 		
 		render("clothbootstrap.html");
 	}
