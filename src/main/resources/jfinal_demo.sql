@@ -1,5 +1,5 @@
 ﻿# Host: localhost  (Version: 5.5.12)
-# Date: 2014-12-06 06:06:25
+# Date: 2014-12-14 17:17:49
 # Generator: MySQL-Front 5.3  (Build 4.156)
 
 /*!40101 SET NAMES utf8 */;
@@ -42,7 +42,7 @@ CREATE TABLE `clothes` (
 # Data for table "clothes"
 #
 
-INSERT INTO `clothes` VALUES (1,'cloth1',1.00,'sdfs','sdfs','2014-01-01 00:00:00','11'),(6,'撒旦法',111.00,'撒旦法','撒旦法','2014-01-02 00:00:00','12'),(7,'撒旦法',10.00,'撒旦法','撒旦法','2014-01-02 00:00:00','12');
+INSERT INTO `clothes` VALUES (1,'cloth1',1.00,'sdfs','sdfs','2014-01-01 00:00:00','11'),(5,'撒旦法',111.00,'撒旦法','撒旦法','2014-01-02 00:00:00','12'),(7,'撒旦法',10.00,'撒旦法','撒旦法','2014-01-02 00:00:00','12');
 
 #
 # Structure for table "clothimage"
@@ -51,8 +51,10 @@ INSERT INTO `clothes` VALUES (1,'cloth1',1.00,'sdfs','sdfs','2014-01-01 00:00:00
 DROP TABLE IF EXISTS `clothimage`;
 CREATE TABLE `clothimage` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `image_url` varchar(150) DEFAULT '' COMMENT '图片URL',
-  `clothes_id` int(11) DEFAULT NULL COMMENT '外键',
+  `imageurl` varchar(150) DEFAULT '' COMMENT '图片URL',
+  `clothesid` int(11) DEFAULT NULL COMMENT '外键',
+  `timeme` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `timememem` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
@@ -60,7 +62,147 @@ CREATE TABLE `clothimage` (
 # Data for table "clothimage"
 #
 
-INSERT INTO `clothimage` VALUES (1,'123',5),(2,'321',5);
+INSERT INTO `clothimage` VALUES (1,'123',5,'2014-12-14 16:52:21',NULL),(2,'321',5,'2014-12-14 16:52:21',NULL);
+
+#
+# Structure for table "sec_permission"
+#
+
+DROP TABLE IF EXISTS `sec_permission`;
+CREATE TABLE `sec_permission` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL COMMENT '名称',
+  `value` varchar(50) NOT NULL COMMENT '值',
+  `url` varchar(255) DEFAULT NULL COMMENT 'url地址',
+  `intro` varchar(255) DEFAULT NULL COMMENT '简介',
+  `pid` bigint(20) DEFAULT '0' COMMENT '父级id',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COMMENT='权限';
+
+#
+# Data for table "sec_permission"
+#
+
+INSERT INTO `sec_permission` VALUES (1,'管理员目录','P_D_ADMIN','/admin/**','',0,'2014-12-14 17:17:01',NULL,NULL),(2,'角色权限管理','P_ROLE','/admin/role/**','',1,'2014-12-14 17:17:01',NULL,NULL),(3,'用户管理','P_USER','/admin/user/**','',1,'2014-12-14 17:17:01',NULL,NULL),(4,'总部目录','P_D_MEMBER','/member/**','',0,'2014-12-14 17:17:01',NULL,NULL),(5,'分部目录','P_D_USER','/user/**','',0,'2014-12-14 17:17:01',NULL,NULL),(6,'用户处理','P_USER_CONTROL','/user/branch**','',5,'2014-12-14 17:17:01',NULL,NULL),(7,'订单','P_ORDER','/order/**','',0,'2014-12-14 17:17:01',NULL,NULL),(8,'订单处理','P_ORDER_CONTROL','/order/deliver**','',7,'2014-12-14 17:17:01',NULL,NULL),(9,'订单更新','P_ORDER_UPDATE','/order/update**','',7,'2014-12-14 17:17:01',NULL,NULL),(10,'支部订单','P_ORDER_BRANCH','/order/branch**','',7,'2014-12-14 17:17:01',NULL,NULL),(11,'区域支行处理','P_REGION_CONTROL','/order/region**','',7,'2014-12-14 17:17:01',NULL,NULL),(12,'收货地址','P_Address','/address/**','',0,'2014-12-14 17:17:01',NULL,NULL);
+
+#
+# Structure for table "sec_role"
+#
+
+DROP TABLE IF EXISTS `sec_role`;
+CREATE TABLE `sec_role` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL COMMENT '名称',
+  `value` varchar(50) NOT NULL COMMENT '值',
+  `intro` varchar(255) DEFAULT NULL COMMENT '简介',
+  `pid` bigint(20) DEFAULT '0' COMMENT '父级id',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='角色';
+
+#
+# Data for table "sec_role"
+#
+
+INSERT INTO `sec_role` VALUES (1,'超级管理员','R_ADMIN','',0,'2014-12-14 17:17:01',NULL,NULL),(2,'系统管理员','R_MANAGER','',1,'2014-12-14 17:17:01',NULL,NULL),(3,'总部','R_MEMBER','',2,'2014-12-14 17:17:01',NULL,NULL),(4,'分部','R_USER','',2,'2014-12-14 17:17:01',NULL,NULL);
+
+#
+# Structure for table "sec_role_permission"
+#
+
+DROP TABLE IF EXISTS `sec_role_permission`;
+CREATE TABLE `sec_role_permission` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `role_id` bigint(20) NOT NULL,
+  `permission_id` bigint(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8 COMMENT='角色权限';
+
+#
+# Data for table "sec_role_permission"
+#
+
+INSERT INTO `sec_role_permission` VALUES (1,1,1),(2,1,2),(3,1,3),(4,1,4),(5,1,5),(6,1,6),(7,1,7),(8,1,8),(9,1,9),(10,1,10),(11,1,11),(12,1,12),(13,2,1),(14,2,3),(15,2,4),(16,2,5),(17,2,6),(18,2,7),(19,2,8),(20,2,9),(21,2,10),(22,2,11),(23,2,12),(24,3,4),(25,3,5),(26,3,6),(27,3,11),(28,4,5),(29,4,7),(30,4,9),(31,4,12);
+
+#
+# Structure for table "sec_user"
+#
+
+DROP TABLE IF EXISTS `sec_user`;
+CREATE TABLE `sec_user` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) NOT NULL COMMENT '登录名',
+  `providername` varchar(50) NOT NULL COMMENT '提供者',
+  `email` varchar(200) DEFAULT NULL COMMENT '邮箱',
+  `phone` varchar(50) DEFAULT NULL COMMENT '联系电话',
+  `password` varchar(200) NOT NULL COMMENT '密码',
+  `hasher` varchar(200) NOT NULL COMMENT '加密类型',
+  `salt` varchar(200) NOT NULL COMMENT '加密盐',
+  `avatar_url` varchar(255) DEFAULT NULL COMMENT '头像',
+  `first_name` varchar(10) DEFAULT NULL COMMENT '名字',
+  `last_name` varchar(10) DEFAULT NULL COMMENT '姓氏',
+  `full_name` varchar(20) DEFAULT NULL COMMENT '全名',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='用户';
+
+#
+# Data for table "sec_user"
+#
+
+INSERT INTO `sec_user` VALUES (1,'admin','shengmu','wangrenhui1990@gmail.com','15611434500','$shiro1$SHA-256$500000$iLqsOFPx5bjMGlB0JiNjQQ==$1cPTj9gyPGmYcKGQ8aw3shybrNF1ixdMCm/akFkn71o=','default_hasher','','','管理员','圣牧','圣牧.管理员','2014-12-14 17:17:01',NULL,NULL);
+
+#
+# Structure for table "sec_user_info"
+#
+
+DROP TABLE IF EXISTS `sec_user_info`;
+CREATE TABLE `sec_user_info` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) NOT NULL COMMENT '用户id',
+  `creator_id` bigint(20) DEFAULT NULL COMMENT '创建者id',
+  `gender` int(11) DEFAULT '0' COMMENT '性别0男，1女',
+  `province_id` bigint(20) DEFAULT NULL COMMENT '省id',
+  `city_id` bigint(20) DEFAULT NULL COMMENT '市id',
+  `county_id` bigint(20) DEFAULT NULL COMMENT '县id',
+  `street` varchar(500) DEFAULT NULL COMMENT '街道',
+  `zip_code` varchar(50) DEFAULT NULL COMMENT '邮编',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='用户信息';
+
+#
+# Data for table "sec_user_info"
+#
+
+INSERT INTO `sec_user_info` VALUES (1,1,0,0,1,2,3,'人民大学',NULL,'2014-12-14 17:17:01',NULL,NULL);
+
+#
+# Structure for table "sec_user_role"
+#
+
+DROP TABLE IF EXISTS `sec_user_role`;
+CREATE TABLE `sec_user_role` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) NOT NULL,
+  `role_id` bigint(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='用户角色';
+
+#
+# Data for table "sec_user_role"
+#
+
+INSERT INTO `sec_user_role` VALUES (1,1,1);
 
 #
 # Structure for table "workmate"
