@@ -4,19 +4,55 @@
 	<groupId>com.tdypro</groupId>
 	<artifactId>jfinal-fire</artifactId>
 	<packaging>war</packaging>
-	<version>1.0-SNAPSHOT</version>
-	<name>jfinal-fire Maven Webapp</name>
-	<url>http://maven.apache.org</url>
+	<version>0.1</version>
+	<name>jfinal-fire demo</name>
+	<url>https://github.com/FireTercel</url>
+	
+	<licenses>
+    	<license>
+      		<name>Apache License Version 2.0</name>
+      		<url>http://www.apache.org/licenses/LICENSE-2.0</url>
+    	</license>
+   	 	<license>
+      		<name>The New BSD License</name>
+      		<url>http://www.opensource.org/licenses/bsd-license.html</url>
+    	</license>
+    	<license>
+      		<name>The Academic Free License, v. 2.1</name>
+      		<url>http://opensource-definition.org/licenses/afl-2.1.html</url>
+    	</license>
+  	</licenses>
+	
+	<!-- developers用于定义开发者的个人信息。 -->
+	<developers>
+    	<developer>
+      		<name>FireTercel</name>
+      		<email>tdy2837@gmail.com</email>
+      		<organization>FireTercel</organization>
+      		<organizationUrl>https://github.com/FireTercel</organizationUrl>
+    	</developer>
+  	</developers>
+  
+   	<scm>
+     	<connection>scm:git:git@github.com:FireTercel/jfinal-fire.git</connection>
+     	<developerConnection>scm:git:git@github.com:FireTercel/jfinal-fire.git</developerConnection>
+     	<url>git@github.com:FireTercel/jfinal-fire.git</url>
+   	</scm>
 
+    <!-- properties用于定义一些常量，在pom的其他位置可以直接引用。 -->
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- 引入shrio包版本號0.2 -->
+		<jfinal-shiro.version>0.2</jfinal-shiro.version>
 	</properties>
 
+	<!-- dependencies用于定义项目中所引用到的包。 -->
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
+			<version>4.8.2</version>
+			<type>jar</type>
 			<scope>test</scope>
 		</dependency>
 
@@ -26,6 +62,7 @@
 			<version>8.1.8</version>
 			<scope>provided</scope>
 		</dependency>  -->
+		
 		<dependency>
 			<groupId>com.jfinal</groupId>
 			<artifactId>jfinal</artifactId>
@@ -37,6 +74,13 @@
 			<artifactId>jfinal-dreampie</artifactId>
 			<version>1.1</version>
 		</dependency> -->
+		
+		<!-- 引入shrio包 -->
+		<dependency>
+   			<groupId>cn.dreampie</groupId>
+   			<artifactId>jfinal-shiro</artifactId>
+   			<version>${jfinal-shiro.version}</version>
+		</dependency>
 
 		<!-- Jetty JSP：根据 Dependency Hierarchy 视图拆分成了七个 dependency， - 方便项目以及便于 
 			导出 war的在jetty与tomcat间无缝迁移 - Dependencies: http://mvnrepository.com/artifact/org.eclipse.jetty/jetty-jsp 
@@ -76,6 +120,8 @@
 			<groupId>org.eclipse.jetty.orbit</groupId>
 			<artifactId>javax.servlet.jsp.jstl</artifactId>
 			<version>1.2.0.v201105211821</version>
+			<!-- exclusions用于声明，不要依赖，即项目中用到了javax.servlet.jsp.jstl，
+			但是，删除掉javax.servlet的依赖 -->
 			<exclusions><!-- 避免导出 servlet jar 包 -->
 				<exclusion>
 					<groupId>org.eclipse.jetty.orbit</groupId>
@@ -127,6 +173,7 @@
 		</dependency>
 
 	</dependencies>
+	<!--  -->
 	<build>
 		<finalName>jfinal-fire</finalName>
 		<plugins>

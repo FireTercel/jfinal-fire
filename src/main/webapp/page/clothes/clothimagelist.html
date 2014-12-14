@@ -1,10 +1,10 @@
-<#include "/page/common/_layout.html"/>
+ï»¿<#include "/page/common/_layout.html"/>
 <@layout>
 <div class="page-header">
-<h2>Clothes¹ÜÀí&nbsp;&nbsp;
-<a href="${contextPath}/clothes/add">´´½¨Clothes</a>&nbsp;&nbsp;
-<a href="${contextPath}/clothes/clothbootstrap">BootstrapÑİÊ¾</a>&nbsp;&nbsp;
-<a href="${contextPath}/clothes/list">Ehcache»º´æÑİÊ¾</a>
+<h2>Clothesç®¡ç†&nbsp;&nbsp;
+<a href="${contextPath}/clothes/add">åˆ›å»ºClothes</a>&nbsp;&nbsp;
+<a href="${contextPath}/clothes/clothbootstrap">Bootstrapæ¼”ç¤º</a>&nbsp;&nbsp;
+<a href="${contextPath}/clothes/list">Ehcacheç¼“å­˜æ¼”ç¤º</a>
 </h2>
 </div>
 <div class="table_box">
@@ -12,9 +12,9 @@
 		<tbody>
 			<tr>
 				<th width="4%">id</th>
-				<th width="12%">Á¬½Ó</th>
-				<th width="12%">Íâ¼üid</th>
-				<th width="12%">²Ù×÷</th>
+				<th width="12%">è¿æ¥</th>
+				<th width="12%">å¤–é”®id</th>
+				<th width="12%">æ“ä½œ</th>
 			</tr>
 			
 			<#list clothimagelist as x>
@@ -23,12 +23,23 @@
 				<td style="text-align:left;">${x.imageurl}</td>
 				<td style="text-align:left;">${x.clothesid}</td>
 				<td style="text-align:left;">
-					&nbsp;&nbsp;<a href="${contextPath}/clothes/delete/${x.id}">É¾³ı</a>
-					&nbsp;&nbsp;<a href="${contextPath}/clothes/edit/${x.id}">ĞŞ¸Ä</a>
+					&nbsp;&nbsp;<a href="${contextPath}/clothes/delete/${x.id}">åˆ é™¤</a>
+					&nbsp;&nbsp;<a href="${contextPath}/clothes/edit/${x.id}">ä¿®æ”¹</a>
 				</td>
 			</tr>
 			</#list>
 		</tbody>
 	</table>
 </div>
+<div>
+	<h1>Hello</h1>
+	<#list clothimagelist as y>
+		<#if y.id==1><b>${"ImageUrl:"+y.imageurl}</b><br/>
+			${clotheslist.id}<br/>
+		<#else >${y.id}
+		</#if>
+	</#list>
+	<br/>
+</div>
+
 </@layout>

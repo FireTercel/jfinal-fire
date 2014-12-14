@@ -2,6 +2,7 @@ package com.demo.clothes;
 
 import com.jfinal.plugin.activerecord.Model;
 
+@SuppressWarnings("serial")
 public class Clothimage extends Model<Clothimage> {
 	public static Clothimage dao=new Clothimage();
 	

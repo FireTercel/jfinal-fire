@@ -2,7 +2,6 @@ package com.demo.clothes;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import com.jfinal.core.Controller;
 import com.jfinal.validate.Validator;
