@@ -1,4 +1,4 @@
-package com.demo.bootstrap;
+package com.demo.function.bootstrap;
 
 import com.jfinal.core.Controller;
 

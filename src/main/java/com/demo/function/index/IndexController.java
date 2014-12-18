@@ -1,6 +1,6 @@
-package com.demo.index;
+package com.demo.function.index;
 
-import com.demo.blog.Blog;
+import com.demo.function.blog.Blog;
 import com.jfinal.core.Controller;
 
 /**

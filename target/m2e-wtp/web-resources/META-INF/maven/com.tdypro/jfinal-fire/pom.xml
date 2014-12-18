@@ -81,6 +81,19 @@
    			<artifactId>jfinal-shiro</artifactId>
    			<version>${jfinal-shiro.version}</version>
 		</dependency>
+		
+		 <!-- shiro和commons-beanutils需要都有 -->
+		<!-- <dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-core</artifactId>
+			<version>1.2.3</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>1.9.2</version>
+		</dependency> -->
 
 		<!-- Jetty JSP：根据 Dependency Hierarchy 视图拆分成了七个 dependency， - 方便项目以及便于 
 			导出 war的在jetty与tomcat间无缝迁移 - Dependencies: http://mvnrepository.com/artifact/org.eclipse.jetty/jetty-jsp 

@@ -1,4 +1,4 @@
-package com.demo.workmate;
+package com.demo.function.workmate;
 
 import com.jfinal.core.Controller;
 

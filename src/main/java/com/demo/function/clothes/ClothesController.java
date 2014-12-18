@@ -1,4 +1,4 @@
-package com.demo.clothes;
+package com.demo.function.clothes;
 
 import java.util.List;
 

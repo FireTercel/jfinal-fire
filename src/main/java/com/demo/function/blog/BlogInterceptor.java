@@ -1,4 +1,4 @@
-package com.demo.blog;
+package com.demo.function.blog;
 
 import com.jfinal.aop.Interceptor;
 import com.jfinal.core.ActionInvocation;

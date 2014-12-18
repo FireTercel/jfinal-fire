@@ -1,4 +1,4 @@
-﻿package com.demo.blog;
+﻿package com.demo.function.blog;
 
 import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Page;

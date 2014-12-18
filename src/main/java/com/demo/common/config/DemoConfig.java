@@ -1,14 +1,14 @@
-package com.demo.common;
+package com.demo.common.config;
 
-import com.demo.blog.Blog;
-import com.demo.blog.BlogController;
-import com.demo.bootstrap.BootstrapController;
-import com.demo.clothes.Clothes;
-import com.demo.clothes.ClothesController;
-import com.demo.clothes.Clothimage;
-import com.demo.index.IndexController;
-import com.demo.workmate.Workmate;
-import com.demo.workmate.WorkmateController;
+import com.demo.function.blog.Blog;
+import com.demo.function.blog.BlogController;
+import com.demo.function.bootstrap.BootstrapController;
+import com.demo.function.clothes.Clothes;
+import com.demo.function.clothes.ClothesController;
+import com.demo.function.clothes.Clothimage;
+import com.demo.function.index.IndexController;
+import com.demo.function.workmate.Workmate;
+import com.demo.function.workmate.WorkmateController;
 import com.jfinal.config.Constants;
 import com.jfinal.config.Handlers;
 import com.jfinal.config.Interceptors;
