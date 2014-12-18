@@ -11,7 +11,7 @@ import com.jfinal.core.ActionInvocation;
 public class HttpServletRequestInterceptor implements Interceptor {
 	
 	public void intercept(ActionInvocation ai) {
-		new HttpServletRequestUtil(ai.getController().getRequest());
+		new HttpServletRequestKit(ai.getController().getRequest());
 		ai.invoke();
 
 	}

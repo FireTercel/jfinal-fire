@@ -1,5 +1,6 @@
 package com.demo.common.config;
 
+import com.demo.common.kit.ExecuteTimeInteceptor;
 import com.demo.function.blog.Blog;
 import com.demo.function.blog.BlogController;
 import com.demo.function.bootstrap.BootstrapController;
@@ -74,7 +75,8 @@ public class DemoConfig extends JFinalConfig {
 	 * 配置全局拦截器
 	 */
 	public void configInterceptor(Interceptors me) {
-		
+		//方法执行时间
+		//me.add(new ExecuteTimeInteceptor());
 	}
 	
 	/**

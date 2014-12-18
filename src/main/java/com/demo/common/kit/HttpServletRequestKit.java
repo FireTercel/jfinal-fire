@@ -4,12 +4,12 @@ import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class HttpServletRequestUtil{
+public class HttpServletRequestKit{
 	private static HttpServletRequest request;
-	public HttpServletRequestUtil(){}
+	public HttpServletRequestKit(){}
 	//拦截器中调用该构造器
-	public HttpServletRequestUtil(HttpServletRequest request){
-		this.request=request;
+	public HttpServletRequestKit(HttpServletRequest req){
+		request=req;
 		//初始化方法，把需要打印的内容添加这个方法中
 		init();
 	}

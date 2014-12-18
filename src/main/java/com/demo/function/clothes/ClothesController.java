@@ -2,6 +2,7 @@ package com.demo.function.clothes;
 
 import java.util.List;
 
+import com.demo.common.kit.ExecuteTimeInteceptor;
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.ehcache.CacheInterceptor;
