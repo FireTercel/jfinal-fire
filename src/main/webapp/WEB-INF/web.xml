@@ -5,7 +5,7 @@
 	id="WebApp_ID" version="2.5">
 	
 	<!--权限过滤器 start-->
-  	<!-- <listener>
+  	<listener>
     	<listener-class>org.apache.shiro.web.env.EnvironmentLoaderListener</listener-class>
   	</listener>
 
@@ -20,7 +20,7 @@
     	<dispatcher>FORWARD</dispatcher>
     	<dispatcher>INCLUDE</dispatcher>
     	<dispatcher>ERROR</dispatcher>
-  	</filter-mapping> -->
+  	</filter-mapping>
   	<!--权限过滤器 end-->
   	
   	<!--自定义过滤器 start-->

@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!-- <?xml version="1.0" encoding="UTF-8"?>
 <ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
-   xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd"  
-   maxBytesLocalDisk="20G" maxBytesLocalHeap="10M"> 
+   xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd" > -->
+<ehcache name="shiro" updateCheck="false" monitoring="autodetect"
+         dynamicConfig="true">
    
    <!-- 用于ehcache
    	 除了指定ehcache.xml文件所遵循的schema之外，我们的ehcache元素还可以指定很多的属性，主要有如下这些。
@@ -22,8 +23,6 @@
          也就是说该CacheManager里面所有的Cache在没有显示的指定overflowToOffHeap属性值时其值默认都是true，原本默认是false。
    	-->
 
-	
-	
 	<!--
     Mandatory Default Cache configuration. These settings will be applied to caches     
     created programmtically using CacheManager.add(String cacheName)     
@@ -46,7 +45,7 @@
     
     <diskStore path="java.io.tmpdir" />
     
-	<defaultCache 
+	<!-- <defaultCache 
 		maxElementsInMemory="10000" 
 		eternal="false" 
 		timeToIdleSeconds="36"
@@ -56,66 +55,61 @@
 		diskPersistent="false"
 		diskExpiryThreadIntervalSeconds="600" 
 		memoryStoreEvictionPolicy="LRU" maxEntriesLocalHeap="10000" 
-		 />
+		 /> -->
 		 
-	<!--
-    Sample cache named sampleCache1
-    This cache contains a maximum in memory of 10000 elements, and will expire
-    an element if it is idle for more than 5 minutes and lives for more than
-    10 minutes.
+	<defaultCache
+      	maxElementsInMemory="10000"
+      	eternal="false"
+      	timeToIdleSeconds="360"
+      	timeToLiveSeconds="360"
+      	overflowToDisk="false"
+      	diskPersistent="false"
+      	diskExpiryThreadIntervalSeconds="120"/>
 
-    If there are more than 10000 elements it will overflow to the
-    disk cache, which in this configuration will go to wherever java.io.tmp is
-    defined on your system. On a standard Linux system this will be /tmp"
-    -->
-    <!-- <cache name="sampleCache1"
-           maxEntriesLocalHeap="10000"
-           maxEntriesLocalDisk="1000"
-           eternal="false"
-           overflowToDisk="true"
-           diskSpoolBufferSizeMB="20"
-           timeToIdleSeconds="300"
-           timeToLiveSeconds="600"
-           memoryStoreEvictionPolicy="LFU"
-           transactionalMode="off"
-            /> -->
-            
-    <!--
-    Sample cache named sampleCache2
-    This cache has a maximum of 1000 elements in memory. There is no overflow to disk, so 1000
-    is also the maximum cache size. Note that when a cache is eternal, timeToLive and
-    timeToIdle are not used and do not need to be specified.
-    -->
-    <!-- <cache name="sampleCache2"
-           maxEntriesLocalHeap="1000"
-           eternal="true"
-           overflowToDisk="false"
-           memoryStoreEvictionPolicy="FIFO"
-            /> -->
+  	<cache name="defaultCache"
+        maxElementsInMemory="10000"
+        eternal="false"
+        timeToIdleSeconds="1200"
+        timeToLiveSeconds="1200"
+        overflowToDisk="false"
+        diskPersistent="false"
+        diskExpiryThreadIntervalSeconds="120"/>
 
-    <!--
-    Sample cache named sampleCache3. This cache overflows to disk. The disk store is
-    persistent between cache and VM restarts. The disk expiry thread interval is set to 10
-    minutes, overriding the default of 2 minutes.
-    -->
-    <!-- <cache name="sampleCache3"
-           maxEntriesLocalHeap="500"
-           eternal="false"
-           overflowToDisk="true"
-           timeToIdleSeconds="300"
-           timeToLiveSeconds="600"
-           diskPersistent="true"
-           diskExpiryThreadIntervalSeconds="1"
-           memoryStoreEvictionPolicy="LFU"
-            /> -->
-	
+  	<cache name="shiro-activeSessionCache"
+         maxElementsInMemory="10000"
+         overflowToDisk="true"
+         eternal="true"
+         timeToLiveSeconds="0"
+         timeToIdleSeconds="0"
+         diskPersistent="true"
+         diskExpiryThreadIntervalSeconds="600"/>
+
+  	<cache name="jdbcRealm.authorizationCache"
+         maxElementsInMemory="10000"
+         overflowToDisk="true"
+         eternal="true"
+         timeToLiveSeconds="0"
+         timeToIdleSeconds="0"
+         diskPersistent="true"
+         diskExpiryThreadIntervalSeconds="600"/>
+         
 	<cache name="/clothes/list" 
-		   overflowToOffHeap="false" 
+		 maxElementsInMemory="10000"
+         overflowToDisk="true"
+         eternal="true"
+         timeToLiveSeconds="0"
+         timeToIdleSeconds="0"
+         diskPersistent="true"
+         diskExpiryThreadIntervalSeconds="600"
 		   />
 		   
 	<cache name="/clothes" 
-		   overflowToOffHeap="false" 
+		 maxElementsInMemory="10000"
+         overflowToDisk="true"
+         eternal="true"
+         timeToLiveSeconds="0"
+         timeToIdleSeconds="0"
+         diskPersistent="true"
+         diskExpiryThreadIntervalSeconds="600" 
 		   />
-	
-	
 </ehcache>

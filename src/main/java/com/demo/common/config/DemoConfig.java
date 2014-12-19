@@ -1,6 +1,8 @@
 package com.demo.common.config;
 
-import com.demo.common.kit.ExecuteTimeInteceptor;
+import cn.dreampie.shiro.core.ShiroPlugin;
+
+import com.demo.common.shiro.MyJdbcAuthzService;
 import com.demo.function.blog.Blog;
 import com.demo.function.blog.BlogController;
 import com.demo.function.bootstrap.BootstrapController;
@@ -29,6 +31,11 @@ import com.jfinal.render.ViewType;
 public class DemoConfig extends JFinalConfig {
 	
 	/**
+	 * 供Shiro插件使用。
+	 */
+	Routes routes;
+
+	/**
 	 * 配置常量
 	 */
 	public void configConstant(Constants me) {
@@ -45,6 +52,9 @@ public class DemoConfig extends JFinalConfig {
 	 * 如果第三个参数省略是，路径默认和第一个参数相同。
 	 */
 	public void configRoute(Routes me) {
+		
+		this.routes=me;
+		
 		me.add("/", IndexController.class, "/page/index");	// 第三个参数为该Controller的视图存放路径
 		me.add("/blog", BlogController.class,"/page/blog");			// 第三个参数省略时默认与第一个参数值相同，在此即为 "/blog"
 		me.add("/clothes",ClothesController.class,"/page/clothes");
@@ -69,6 +79,8 @@ public class DemoConfig extends JFinalConfig {
 		arp.addMapping("workmate", Workmate.class);
 		
 		me.add(new EhCachePlugin());
+		//shiro权限框架
+	    me.add(new ShiroPlugin(routes, new MyJdbcAuthzService()));
 	}
 	
 	/**
