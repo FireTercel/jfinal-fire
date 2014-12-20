@@ -1,5 +1,7 @@
 package com.demo.function.bootstrap;
 
+import cn.dreampie.routebind.ControllerKey;
+
 import com.jfinal.core.Controller;
 
 /**
@@ -7,6 +9,7 @@ import com.jfinal.core.Controller;
  * @author Administrator
  *
  */
+@ControllerKey(value="/bootstrap",path="/page/bootstrap")
 public class BootstrapController extends Controller {
 	
 	public void index(){

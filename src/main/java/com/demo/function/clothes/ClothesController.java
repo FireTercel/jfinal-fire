@@ -2,6 +2,8 @@ package com.demo.function.clothes;
 
 import java.util.List;
 
+import cn.dreampie.routebind.ControllerKey;
+
 import com.demo.common.kit.ExecuteTimeInteceptor;
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
@@ -9,6 +11,7 @@ import com.jfinal.plugin.ehcache.CacheInterceptor;
 import com.jfinal.plugin.ehcache.CacheName;
 import com.jfinal.plugin.ehcache.EvictInterceptor;
 
+@ControllerKey(value="/clothes",path="/page/clothes")
 public class ClothesController extends Controller {
 
 	@Before(CacheInterceptor.class)

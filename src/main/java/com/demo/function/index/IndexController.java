@@ -1,11 +1,14 @@
 package com.demo.function.index;
 
+import cn.dreampie.routebind.ControllerKey;
+
 import com.demo.function.blog.Blog;
 import com.jfinal.core.Controller;
 
 /**
  * IndexController
  */
+@ControllerKey(value="/",path="/page/index")
 public class IndexController extends Controller {
 	public void index() {
 		render("index.html");

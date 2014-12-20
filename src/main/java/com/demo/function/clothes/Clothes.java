@@ -2,6 +2,8 @@ package com.demo.function.clothes;
 
 import java.util.List;
 
+import cn.dreampie.tablebind.TableBind;
+
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Page;
@@ -14,6 +16,7 @@ import com.jfinal.plugin.activerecord.Record;
  *
  */
 @SuppressWarnings("serial")
+@TableBind(tableName="clothes")
 public class Clothes extends Model<Clothes> {
 	
 	public static Clothes dao=new Clothes();

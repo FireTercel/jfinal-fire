@@ -1,9 +1,12 @@
 package com.demo.function.workmate;
 
+import cn.dreampie.tablebind.TableBind;
+
 import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Page;
 
 @SuppressWarnings("serial")
+@TableBind(tableName="workmate")
 public class Workmate extends Model<Workmate> {
 	
 	public static final Workmate dao=new Workmate();

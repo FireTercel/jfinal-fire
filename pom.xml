@@ -44,6 +44,10 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- 引入shrio包版本號0.2 -->
 		<jfinal-shiro.version>0.2</jfinal-shiro.version>
+		<jfinal-sqlinxml.version>0.1</jfinal-sqlinxml.version>
+		<jfinal-tablebind.version>0.1</jfinal-tablebind.version>
+		<jfinal-routebind.version>0.1</jfinal-routebind.version>
+		<druid.version>1.0.9</druid.version>
 	</properties>
 
 	<!-- dependencies用于定义项目中所引用到的包。 -->
@@ -72,7 +76,7 @@
 		<!-- <dependency>
 			<groupId>cn.dreampie</groupId>
 			<artifactId>jfinal-dreampie</artifactId>
-			<version>1.1</version>
+			<version>1.2</version>
 		</dependency> -->
 		
 		<!-- 引入shrio包 -->
@@ -81,6 +85,25 @@
    			<artifactId>jfinal-shiro</artifactId>
    			<version>${jfinal-shiro.version}</version>
 		</dependency>
+		
+		<dependency>
+   			<groupId>cn.dreampie</groupId>
+   			<artifactId>jfinal-sqlinxml</artifactId>
+   			<version>${jfinal-sqlinxml.version}</version>
+		</dependency>
+		
+		<dependency>
+   			<groupId>cn.dreampie</groupId>
+   			<artifactId>jfinal-tablebind</artifactId>
+   			<version>${jfinal-tablebind.version}</version>
+		</dependency>
+		
+		<dependency>
+   			<groupId>cn.dreampie</groupId>
+   			<artifactId>jfinal-routebind</artifactId>
+   			<version>${jfinal-routebind.version}</version>
+		</dependency>
+		
 		
 		 <!-- shiro和commons-beanutils需要都有 -->
 		<!-- <dependency>
@@ -153,6 +176,12 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		
+		<dependency>
+      		<groupId>com.alibaba</groupId>
+      		<artifactId>druid</artifactId>
+      		<version>${druid.version}</version>
+    	</dependency>
 
 		<dependency>
 			<groupId>c3p0</groupId>

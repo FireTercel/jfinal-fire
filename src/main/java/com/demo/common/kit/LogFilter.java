@@ -43,7 +43,7 @@ public class LogFilter implements Filter {
 		long bef=System.currentTimeMillis();
 		chain.doFilter(request, response);
 		long aft=System.currentTimeMillis();
-		System.out.println("自定义过滤器： "+request.getRequestURI()+" ; 时间："+(aft-bef));
+		System.out.println("自定义过滤器： "+request.getRequestURI()+" ; 时间："+(aft-bef)+" ms");
 		//context.log("Request to "+request.getRequestURI()+":"+(aft-bef));
 
 	}

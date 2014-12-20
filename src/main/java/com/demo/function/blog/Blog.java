@@ -1,5 +1,7 @@
 ﻿package com.demo.function.blog;
 
+import cn.dreampie.tablebind.TableBind;
+
 import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Page;
 
@@ -19,6 +21,7 @@ mysql> desc blog;
 数据库字段名建议使用驼峰命名规则，便于与 java 代码保持一致，如字段名： userId
  */
 @SuppressWarnings("serial")
+@TableBind(tableName="blog")
 public class Blog extends Model<Blog> {
 	public static final Blog me = new Blog();
 	
