@@ -29,7 +29,7 @@ public class LogFilter implements Filter {
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
 		// TODO Auto-generated method stub
-		
+		config=filterConfig;
 
 	}
 
@@ -39,12 +39,12 @@ public class LogFilter implements Filter {
 		HttpServletRequest request = (HttpServletRequest)req;
 		HttpServletResponse response = (HttpServletResponse)res;
 		
-		//ServletContext context=getFilterConfig().getServletContext();
+		ServletContext context=getFilterConfig().getServletContext();
 		long bef=System.currentTimeMillis();
 		chain.doFilter(request, response);
 		long aft=System.currentTimeMillis();
 		System.out.println("自定义过滤器： "+request.getRequestURI()+" ; 时间："+(aft-bef)+" ms");
-		//context.log("Request to "+request.getRequestURI()+":"+(aft-bef));
+		context.log("Request to "+request.getRequestURI()+" ; 时间："+(aft-bef)+" ms");
 
 	}
 

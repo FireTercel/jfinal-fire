@@ -139,7 +139,7 @@ public class DemoConfig extends JFinalConfig {
 		//ehcache缓存
 		me.add(new EhCachePlugin());
 		//shiro权限框架
-	    me.add(new ShiroPlugin(routes, new MyJdbcAuthzService()));
+	    me.add(new ShiroPlugin(routes, new MyJdbcAuthzService())); 
 	}
 	
 	/**
