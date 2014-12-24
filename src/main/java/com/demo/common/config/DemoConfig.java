@@ -3,11 +3,13 @@ package com.demo.common.config;
 import cn.dreampie.log.Slf4jLogFactory;
 import cn.dreampie.routebind.ControllerKey;
 import cn.dreampie.routebind.RouteBind;
+import cn.dreampie.shiro.core.ShiroInterceptor;
 import cn.dreampie.shiro.core.ShiroPlugin;
 import cn.dreampie.sqlinxml.SqlInXmlPlugin;
 import cn.dreampie.tablebind.SimpleNameStyles;
 import cn.dreampie.tablebind.TableBind;
 import cn.dreampie.tablebind.TableBindPlugin;
+import cn.dreampie.web.interceptor.UrlInterceptor;
 
 import com.alibaba.druid.filter.stat.StatFilter;
 import com.alibaba.druid.wall.WallFilter;
@@ -29,6 +31,7 @@ import com.jfinal.config.Plugins;
 import com.jfinal.config.Routes;
 import com.jfinal.core.JFinal;
 import com.jfinal.ext.handler.ContextPathHandler;
+import com.jfinal.ext.interceptor.SessionInViewInterceptor;
 import com.jfinal.log.Logger;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.activerecord.CaseInsensitiveContainerFactory;
@@ -36,6 +39,7 @@ import com.jfinal.plugin.activerecord.dialect.AnsiSqlDialect;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
 import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.plugin.ehcache.EhCachePlugin;
+import com.jfinal.render.FreeMarkerRender;
 import com.jfinal.render.ViewType;
 
 /**
@@ -62,6 +66,8 @@ public class DemoConfig extends JFinalConfig {
 	}
 	
 	/**
+	 * 配置路由
+	 * 
 	 * 原始：配置路由 第三个参数，最好加上去，因为它代表了view存放的位置。
 	 * 		如果第三个参数省略是，路径默认和第一个参数相同。
 	 * 
@@ -85,6 +91,8 @@ public class DemoConfig extends JFinalConfig {
 	}
 	
 	/**
+	 * 配置插件
+	 * 
 	 * 原始：配置插件，数据库连接池可以使用C3p0Plugin，
 	 * 		也可以使用阿里巴巴的DruidPlugin；
 	 * 直接使用ActiveRecordPlugin插件：
@@ -148,6 +156,10 @@ public class DemoConfig extends JFinalConfig {
 	public void configInterceptor(Interceptors me) {
 		//方法执行时间
 		//me.add(new ExecuteTimeInteceptor());
+		//添加shiro的过滤器到interceptor
+		me.add(new ShiroInterceptor());
+		me.add(new SessionInViewInterceptor());
+		me.add(new UrlInterceptor());
 	}
 	
 	/**
@@ -155,6 +167,12 @@ public class DemoConfig extends JFinalConfig {
 	 */
 	public void configHandler(Handlers me) {
 		me.add(new ContextPathHandler("contextPath"));
+	}
+	
+	public void afterJFinalStart(){
+		super.afterJFinalStart();
+		FreeMarkerRender.setProperties(loadPropertyFile("freemarker.properties"));
+		//FreeMarkerRender.getConfiguration().setSharedVariable("shiro",new ShiroTags());
 	}
 	
 	/**

@@ -1,8 +1,8 @@
 package com.demo.function.workmate;
 
 import cn.dreampie.tablebind.TableBind;
+import cn.dreampie.web.model.Model;
 
-import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Page;
 
 @SuppressWarnings("serial")

@@ -29,7 +29,7 @@
       		<name>FireTercel</name>
       		<email>tdy2837@gmail.com</email>
       		<organization>FireTercel</organization>
-      		<organizationUrl>https://github.com/FireTercel</organizationUrl>
+      		<organizationUrl>https://github.com/FireTercel</organizationUrl> 
     	</developer>
   	</developers>
   
@@ -47,25 +47,26 @@
 		<jfinal-sqlinxml.version>0.1</jfinal-sqlinxml.version>
 		<jfinal-tablebind.version>0.1</jfinal-tablebind.version>
 		<jfinal-routebind.version>0.1</jfinal-routebind.version>
+		<jfinal-shiro-freemarker.version>0.2</jfinal-shiro-freemarker.version>
 		<druid.version>1.0.9</druid.version>
 	</properties>
 
 	<!-- dependencies用于定义项目中所引用到的包。 -->
 	<dependencies>
 		<dependency>
-			<groupId>junit</groupId>
+			<groupId>junit</groupId> 
 			<artifactId>junit</artifactId>
 			<version>4.8.2</version>
 			<type>jar</type>
 			<scope>test</scope>
 		</dependency>
 
-		<!-- <dependency>
+		<dependency>
 			<groupId>com.jfinal</groupId>
 			<artifactId>jetty-server</artifactId>
 			<version>8.1.8</version>
 			<scope>provided</scope>
-		</dependency>  -->
+		</dependency>
 		
 		<dependency>
 			<groupId>com.jfinal</groupId>
@@ -103,6 +104,12 @@
    			<artifactId>jfinal-routebind</artifactId>
    			<version>${jfinal-routebind.version}</version>
 		</dependency>
+		
+		<dependency>
+      		<groupId>cn.dreampie</groupId>
+      		<artifactId>jfinal-shiro-freemarker</artifactId>
+      		<version>${jfinal-shiro-freemarker.version}</version>  
+    	</dependency> 
 		
 		
 		 <!-- shiro和commons-beanutils需要都有 -->

@@ -1,6 +1,13 @@
 package com.demo.function.index;
 
+
+import java.util.Map;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import cn.dreampie.routebind.ControllerKey;
+import cn.dreampie.shiro.core.SubjectKit;
 
 import com.demo.function.blog.Blog;
 import com.jfinal.core.Controller;
@@ -10,8 +17,52 @@ import com.jfinal.core.Controller;
  */
 @ControllerKey(value="/",path="/page/index")
 public class IndexController extends Controller {
+	
+	static String indexView="index.html";
+	protected Logger logger=LoggerFactory.getLogger(getClass());
+	
+	public void setSuccess(){
+		setAttr("state", "success");
+	}
+	
+	public void setSuccess(String name,Object value){
+		setSuccess();
+		setAttr(name, value);
+	}
+	
+	public void setSuccess(Map<String, Object> attrMap){
+		setSuccess();
+	    setAttrs(attrMap);
+	}
+	
+	public void setError(){
+		setAttr("state", "error");
+	}
+	
+	public void setError(String name,Object value){
+		setError();
+		setAttr(name, value);
+	}
+	
+	public void setError(Map<String, Object> attrMap){
+		setError();
+		setAttrs(attrMap);
+	}
+	
+	/**
+	 * 根目录
+	 */
 	public void index() {
-		render("index.html");
+		render(indexView);
+	}
+	
+	public void authed(){
+		setAttr("isAuthed", SubjectKit.isAuthed());
+		render(indexView);
+	}
+	
+	public void tosignin(){
+		redirect("/");
 	}
 
 	/**

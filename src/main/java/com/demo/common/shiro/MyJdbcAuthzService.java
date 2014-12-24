@@ -14,6 +14,7 @@ import cn.dreampie.shiro.core.handler.AuthzHandler;
 import cn.dreampie.shiro.core.handler.JdbcPermissionAuthzHandler;
 
 /**
+ * 实现数据库权限的初始化加载
  * 实现的接口是Dreampie的JdbcAuthzService
  * 只有一个方法getJdbcAuthz()，return一个Map<String,AuthzHandler>
  * @author Administrator

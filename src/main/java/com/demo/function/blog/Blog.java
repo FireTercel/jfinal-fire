@@ -1,8 +1,8 @@
 ﻿package com.demo.function.blog;
 
 import cn.dreampie.tablebind.TableBind;
+import cn.dreampie.web.model.Model;
 
-import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Page;
 
 /**
