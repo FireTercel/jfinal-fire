@@ -1,18 +1,18 @@
 package com.demo.common.config;
 
 import cn.dreampie.log.Slf4jLogFactory;
-import cn.dreampie.routebind.ControllerKey;
 import cn.dreampie.routebind.RouteBind;
 import cn.dreampie.shiro.core.ShiroInterceptor;
 import cn.dreampie.shiro.core.ShiroPlugin;
+import cn.dreampie.shiro.freemarker.ShiroTags;
 import cn.dreampie.sqlinxml.SqlInXmlPlugin;
 import cn.dreampie.tablebind.SimpleNameStyles;
-import cn.dreampie.tablebind.TableBind;
 import cn.dreampie.tablebind.TableBindPlugin;
 import cn.dreampie.web.interceptor.UrlInterceptor;
 
 import com.alibaba.druid.filter.stat.StatFilter;
 import com.alibaba.druid.wall.WallFilter;
+import com.demo.common.resource.ResourceTags;
 import com.demo.common.shiro.MyJdbcAuthzService;
 import com.demo.function.blog.Blog;
 import com.demo.function.blog.BlogController;
@@ -23,20 +23,13 @@ import com.demo.function.clothes.Clothimage;
 import com.demo.function.index.IndexController;
 import com.demo.function.workmate.Workmate;
 import com.demo.function.workmate.WorkmateController;
-import com.jfinal.config.Constants;
-import com.jfinal.config.Handlers;
-import com.jfinal.config.Interceptors;
-import com.jfinal.config.JFinalConfig;
-import com.jfinal.config.Plugins;
-import com.jfinal.config.Routes;
+import com.jfinal.config.*;
 import com.jfinal.core.JFinal;
 import com.jfinal.ext.handler.ContextPathHandler;
 import com.jfinal.ext.interceptor.SessionInViewInterceptor;
 import com.jfinal.log.Logger;
-import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.activerecord.CaseInsensitiveContainerFactory;
 import com.jfinal.plugin.activerecord.dialect.AnsiSqlDialect;
-import com.jfinal.plugin.c3p0.C3p0Plugin;
 import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.plugin.ehcache.EhCachePlugin;
 import com.jfinal.render.FreeMarkerRender;
@@ -172,7 +165,8 @@ public class DemoConfig extends JFinalConfig {
 	public void afterJFinalStart(){
 		super.afterJFinalStart();
 		FreeMarkerRender.setProperties(loadPropertyFile("freemarker.properties"));
-		//FreeMarkerRender.getConfiguration().setSharedVariable("shiro",new ShiroTags());
+		FreeMarkerRender.getConfiguration().setSharedVariable("shiro",new ShiroTags());
+		FreeMarkerRender.getConfiguration().setSharedVariable("resource", new ResourceTags());
 	}
 	
 	/**
