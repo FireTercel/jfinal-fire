@@ -159,7 +159,7 @@ public class DemoConfig extends JFinalConfig {
 	 * 配置处理器
 	 */
 	public void configHandler(Handlers me) {
-		me.add(new ContextPathHandler("contextPath"));
+		
 	}
 	
 	public void afterJFinalStart(){
