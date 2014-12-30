@@ -47,7 +47,9 @@
 		<jfinal-sqlinxml.version>0.1</jfinal-sqlinxml.version>
 		<jfinal-tablebind.version>0.1</jfinal-tablebind.version>
 		<jfinal-routebind.version>0.1</jfinal-routebind.version>
+		<jfinal-captcha.version>0.1</jfinal-captcha.version>
 		<jfinal-shiro-freemarker.version>0.2</jfinal-shiro-freemarker.version>
+		<jfinal-ext.version>3.1.2</jfinal-ext.version>
 		<druid.version>1.0.9</druid.version>
 	</properties>
 
@@ -106,9 +108,21 @@
 		</dependency>
 		
 		<dependency>
+   			<groupId>cn.dreampie</groupId>
+   			<artifactId>jfinal-captcha</artifactId>
+   			<version>${jfinal-captcha.version}</version>
+		</dependency>
+		
+		<dependency>
       		<groupId>cn.dreampie</groupId>
       		<artifactId>jfinal-shiro-freemarker</artifactId>
       		<version>${jfinal-shiro-freemarker.version}</version>
+    	</dependency> 
+    	
+    	<dependency>
+      		<groupId>com.jfinal</groupId>
+      		<artifactId>jfinal-ext</artifactId>
+      		<version>${jfinal-ext.version}</version>
     	</dependency> 
 		
 		

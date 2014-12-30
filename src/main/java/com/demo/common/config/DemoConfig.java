@@ -1,5 +1,7 @@
 package com.demo.common.config;
 
+import java.util.Locale;
+
 import cn.dreampie.log.Slf4jLogFactory;
 import cn.dreampie.routebind.RouteBind;
 import cn.dreampie.shiro.core.ShiroInterceptor;
@@ -8,6 +10,10 @@ import cn.dreampie.shiro.freemarker.ShiroTags;
 import cn.dreampie.sqlinxml.SqlInXmlPlugin;
 import cn.dreampie.tablebind.SimpleNameStyles;
 import cn.dreampie.tablebind.TableBindPlugin;
+import cn.dreampie.web.handler.FakeStaticHandler;
+import cn.dreampie.web.handler.ResourceHandler;
+import cn.dreampie.web.handler.SkipHandler;
+import cn.dreampie.web.handler.xss.AttackHandler;
 import cn.dreampie.web.interceptor.UrlInterceptor;
 
 import com.alibaba.druid.filter.stat.StatFilter;
@@ -27,6 +33,7 @@ import com.jfinal.config.*;
 import com.jfinal.core.JFinal;
 import com.jfinal.ext.handler.ContextPathHandler;
 import com.jfinal.ext.interceptor.SessionInViewInterceptor;
+import com.jfinal.i18n.I18N;
 import com.jfinal.log.Logger;
 import com.jfinal.plugin.activerecord.CaseInsensitiveContainerFactory;
 import com.jfinal.plugin.activerecord.dialect.AnsiSqlDialect;
@@ -34,6 +41,8 @@ import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.plugin.ehcache.EhCachePlugin;
 import com.jfinal.render.FreeMarkerRender;
 import com.jfinal.render.ViewType;
+
+import freemarker.template.TemplateModelException;
 
 /**
  * API引导式配置
@@ -53,7 +62,7 @@ public class DemoConfig extends JFinalConfig {
 		loadPropertyFile("application.properties");
 		me.setDevMode(getPropertyToBoolean("devMode", false));
 		Logger.setLoggerFactory(new Slf4jLogFactory());
-		me.setViewType(ViewType.FREE_MARKER);
+		//me.setViewType(ViewType.FREE_MARKER);
 		//me.setError404View("error404.html");
 		//me.setError500View("error500.html");
 	}
@@ -159,6 +168,10 @@ public class DemoConfig extends JFinalConfig {
 	 * 配置处理器
 	 */
 	public void configHandler(Handlers me) {
+		me.add(new FakeStaticHandler());
+		me.add(new ResourceHandler("/javascript/**", "/images/**", "/css/**", "/lib/**", "/**/*.html"));
+		me.add(new SkipHandler("/im/**"));
+		me.add(new AttackHandler());
 		
 	}
 	
@@ -167,6 +180,7 @@ public class DemoConfig extends JFinalConfig {
 		FreeMarkerRender.setProperties(loadPropertyFile("freemarker.properties"));
 		FreeMarkerRender.getConfiguration().setSharedVariable("shiro",new ShiroTags());
 		FreeMarkerRender.getConfiguration().setSharedVariable("resource", new ResourceTags());
+		
 	}
 	
 	/**

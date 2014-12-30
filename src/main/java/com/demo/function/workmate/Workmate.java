@@ -12,6 +12,6 @@ public class Workmate extends Model<Workmate> {
 	public static final Workmate dao=new Workmate();
 	
 	public Page<Workmate> paginate(int pageNumber,int pageSize){
-		return paginate(pageNumber, pageSize, "select *", "from workmate order by id asc");
+		return paginate(pageNumber, pageSize, "SELECT *", "FROM workmate ORDER BY id ASC");
 	}
 }
