@@ -1,8 +1,11 @@
 package com.demo.common.kit;
 
 import java.util.Enumeration;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.servlet.http.HttpServletRequest;
+
 
 public class HttpServletRequestKit{
 	private static HttpServletRequest request;
@@ -16,9 +19,11 @@ public class HttpServletRequestKit{
 	
 	public static void init(){
 		//打印客户机信息
-		printHttpInfo();
+		//printHttpInfo();
 		//打印客户机请求头信息
-		printHttpHeadInfo();
+		//printHttpHeadInfo();
+		
+		printHttpReqParams();
 	}
 	
 	public static void printHttpInfo(){
@@ -58,6 +63,26 @@ public class HttpServletRequestKit{
 			System.out.println(name+":"+value);
 		}
 		System.out.println("    ======   This will get 客户机请求头信息  end ====  ");
+	}
+	
+	public static void printHttpReqParams(){
+		print("    ======   This will print parameterMap ====  ");
+		Map<String, String[]> parasMap = request.getParameterMap();
+		if (parasMap==null) {
+			print("parameterMap is null");
+		}else {
+			for (Entry<String,String[]> e : parasMap.entrySet()) {
+				String paraKey=e.getKey();
+				print(paraKey);
+				
+			}
+		}
+		
+	}
+	
+	
+	public static void print(String print){
+		System.out.println(print);
 	}
 
 }

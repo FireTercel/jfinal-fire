@@ -1,5 +1,5 @@
 ﻿<#include "/page/common/_layout.html"/>
-<@layout>
+<@layout activebar="signin" html_title="登录">
 <div class="jumbotron">
 
 	<p><a href="/" class="btn btn-primary btn-lg" role="button">Index &raquo;</a></p>

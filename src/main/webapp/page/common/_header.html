@@ -12,11 +12,14 @@
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<!-- <li class="active"><a href="/">首页</a></li> -->
-					<li class="active"><a href="/">首页</a></li>
-					<li><a href="/blog">Blog管理</a></li>
-					<li><a href="/clothes">Clothes管理</a></li>
-					<li><a href="/workmate">员工管理</a></li>
+					<li class="<#if activebar='index'>active</#if>"><a  href="/">首页</a></li>
+					
+					
+					<@shiro.hasPermission name="P_USER_CONTROL">
+						<li class="<#if activebar='blog'>active</#if>"><a href="/blog">Blog管理</a></li>
+						<li class="<#if activebar='clothes'>active</#if>"><a href="/clothes">Clothes管理</a></li>
+        				<li class="<#if activebar='center'>active</#if>"><a href="#">员工管理</a></li>
+      				</@shiro.hasPermission>
 					<li class="dropdown"><a href="/bootstrap"
 						class="dropdown-toggle" data-toggle="dropdown">Bootstrap管理<span
 							class="caret"></span></a>
@@ -25,9 +28,18 @@
 							<li><a href="#">Another action</a></li>
 							<li><a href="#">Something else here</a></li>
 							<li class="divider"></li>
-							<li class="dropdown-header">用户操作</li>
-							<li><a href="/signin">登录</a></li>
-							<li><a href="#">退出</a></li>
+							<li class="dropdown-header"><b>用户操作</b></li>
+							
+							
+							<@shiro.authenticated>
+      							<li><a href="/user/center">
+        						<@shiro.principal name="full_name"/>
+      							</a></li>
+      						<li><a href="/signout">退出</a></li>
+   	 						</@shiro.authenticated>
+							<@shiro.notAuthenticated>
+								<li><a href="/signin">登录</a></li>
+							</@shiro.notAuthenticated>
 						</ul></li>
 				</ul>
 			</div>

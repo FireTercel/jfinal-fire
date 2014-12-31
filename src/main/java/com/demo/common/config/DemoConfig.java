@@ -27,8 +27,6 @@ import com.demo.function.clothes.Clothes;
 import com.demo.function.clothes.ClothesController;
 import com.demo.function.clothes.Clothimage;
 import com.demo.function.index.IndexController;
-import com.demo.function.workmate.Workmate;
-import com.demo.function.workmate.WorkmateController;
 import com.jfinal.config.*;
 import com.jfinal.core.JFinal;
 import com.jfinal.ext.handler.ContextPathHandler;
@@ -88,7 +86,6 @@ public class DemoConfig extends JFinalConfig {
 		//me.add("/", IndexController.class, "/page/index");	// 第三个参数为该Controller的视图存放路径
 		//me.add("/blog", BlogController.class,"/page/blog");			// 第三个参数省略时默认与第一个参数值相同，在此即为 "/blog"
 		//me.add("/clothes",ClothesController.class,"/page/clothes");
-		//me.add("/workmate", WorkmateController.class, "/page/workmate");
 		//me.add("/bootstrap",BootstrapController.class,"/page/bootstrap");
 	}
 	
@@ -168,10 +165,10 @@ public class DemoConfig extends JFinalConfig {
 	 * 配置处理器
 	 */
 	public void configHandler(Handlers me) {
-		me.add(new FakeStaticHandler());
-		me.add(new ResourceHandler("/javascript/**", "/images/**", "/css/**", "/lib/**", "/**/*.html"));
-		me.add(new SkipHandler("/im/**"));
-		me.add(new AttackHandler());
+		//me.add(new FakeStaticHandler());
+		//me.add(new ResourceHandler("/javascript/**", "/images/**", "/css/**", "/lib/**", "/**/*.html"));
+		//me.add(new SkipHandler("/im/**"));
+		//me.add(new AttackHandler());
 		
 	}
 	
