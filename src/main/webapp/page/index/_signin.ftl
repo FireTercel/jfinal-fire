@@ -24,7 +24,7 @@
 		</label>
 	</div>
 	<@shiro.isLoginFailure name="shiroLoginFailure">
-        <div style="background-image: none;">
+        <div class="alert alert-danger" style="background-image: none;">
           <@shiro.loginException name="shiroLoginFailure"/>
         </div>
     </@shiro.isLoginFailure>
