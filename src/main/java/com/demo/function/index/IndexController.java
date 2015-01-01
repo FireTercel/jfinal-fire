@@ -21,7 +21,7 @@ public class IndexController extends Controller {
 	static String indexView = "index.html";
 	protected Logger logger = LoggerFactory.getLogger(getClass());
 
-	public void setSuccess() {
+	/*public void setSuccess() {
 		setAttr("state", "success");
 	}
 
@@ -47,7 +47,7 @@ public class IndexController extends Controller {
 	public void setError(Map<String, Object> attrMap) {
 		setError();
 		setAttrs(attrMap);
-	}
+	}*/
 
 	/**
 	 * 根目录

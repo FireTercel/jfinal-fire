@@ -1,6 +1,5 @@
 package com.demo.common.config;
 
-import java.util.Locale;
 
 import cn.dreampie.log.Slf4jLogFactory;
 import cn.dreampie.routebind.RouteBind;
@@ -10,44 +9,28 @@ import cn.dreampie.shiro.freemarker.ShiroTags;
 import cn.dreampie.sqlinxml.SqlInXmlPlugin;
 import cn.dreampie.tablebind.SimpleNameStyles;
 import cn.dreampie.tablebind.TableBindPlugin;
-import cn.dreampie.web.handler.FakeStaticHandler;
-import cn.dreampie.web.handler.ResourceHandler;
-import cn.dreampie.web.handler.SkipHandler;
-import cn.dreampie.web.handler.xss.AttackHandler;
 import cn.dreampie.web.interceptor.UrlInterceptor;
 
 import com.alibaba.druid.filter.stat.StatFilter;
 import com.alibaba.druid.wall.WallFilter;
 import com.demo.common.resource.ResourceTags;
 import com.demo.common.shiro.MyJdbcAuthzService;
-import com.demo.function.blog.Blog;
-import com.demo.function.blog.BlogController;
-import com.demo.function.bootstrap.BootstrapController;
-import com.demo.function.clothes.Clothes;
-import com.demo.function.clothes.ClothesController;
-import com.demo.function.clothes.Clothimage;
-import com.demo.function.index.IndexController;
 import com.jfinal.config.*;
 import com.jfinal.core.JFinal;
-import com.jfinal.ext.handler.ContextPathHandler;
 import com.jfinal.ext.interceptor.SessionInViewInterceptor;
-import com.jfinal.i18n.I18N;
 import com.jfinal.log.Logger;
 import com.jfinal.plugin.activerecord.CaseInsensitiveContainerFactory;
 import com.jfinal.plugin.activerecord.dialect.AnsiSqlDialect;
 import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.plugin.ehcache.EhCachePlugin;
 import com.jfinal.render.FreeMarkerRender;
-import com.jfinal.render.ViewType;
-
-import freemarker.template.TemplateModelException;
 
 /**
  * API引导式配置
  */
 public class DemoConfig extends JFinalConfig {
 	
-	/**
+	/** 
 	 * 供Shiro插件使用。
 	 */
 	Routes routes;
@@ -61,10 +44,11 @@ public class DemoConfig extends JFinalConfig {
 		me.setDevMode(getPropertyToBoolean("devMode", false));
 		Logger.setLoggerFactory(new Slf4jLogFactory());
 		//me.setViewType(ViewType.FREE_MARKER);
-		//me.setError404View("error404.html");
-		//me.setError500View("error500.html");
-	}
-	
+		me.setError401View("/page/index/_signin.ftl");
+		me.setError404View("/page/app/error404.html");
+		me.setError500View("/page/app/error500.html");
+	} 
+	 
 	/**
 	 * 配置路由
 	 * 
