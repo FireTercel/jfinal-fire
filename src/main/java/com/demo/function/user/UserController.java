@@ -8,7 +8,9 @@ import cn.dreampie.shiro.hasher.HasherInfo;
 import cn.dreampie.shiro.hasher.HasherKit;
 
 import com.demo.function.user.model.User;
+import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
+import com.jfinal.plugin.activerecord.tx.Tx;
 
 @ControllerKey(value="/user")
 public class UserController extends Controller {
@@ -25,7 +27,7 @@ public class UserController extends Controller {
 		render("/page/app/user/center.html");
 	}
 	
-	
+	@Before({UserValidator.class,Tx.class})
 	public void updatePwd(){
 		keepModel(User.class);
 		User upUser=getModel(User.class);

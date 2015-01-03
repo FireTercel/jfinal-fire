@@ -79,7 +79,7 @@ public class MyJdbcRealm extends AuthorizingRealm {
 	    } else {
 	      SubjectKit.getSubject().logout();
 	    }
-
+	    
 	    loadRole(roleSet, permissionSet, roles);
 	    info.setRoles(roleSet); // 设置角色
 	    info.setStringPermissions(permissionSet); // 设置权限
@@ -87,7 +87,9 @@ public class MyJdbcRealm extends AuthorizingRealm {
 	}
 	
 	/**
-	 * 
+	 * @description 1、先判断每一个role是不是可用，即deleted_at为空;
+	 * 				2、roleSet保存了数据库表sec_role中的全部信息value字段，如：R_ADMIN、R_MEMBER……等;
+	 * 				3、permissionSet保存了数据库表sec_permission中的全部信息value字段，如：P_D_ADMIN、P_ROLE……等;
 	 * @param roleSet
 	 * @param permissionSet
 	 * @param roles
@@ -140,6 +142,19 @@ public class MyJdbcRealm extends AuthorizingRealm {
 				cache.remove(key);
 			}
 		}
+	}
+	
+	public static void main(String [] args){
+		MyJdbcRealm myRealm=new MyJdbcRealm();
+		myRealm.test();
+		
+	}
+	
+	public void test(){
+		String name=getClass().getName();
+		String simplename=getClass().getSimpleName();
+		System.out.println(name);
+		System.out.println(simplename);
 	}
 
 	
