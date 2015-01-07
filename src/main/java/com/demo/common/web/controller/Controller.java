@@ -106,7 +106,7 @@ public class Controller extends JFController {
 	  }
 
 	  public void tosignin() {
-	    redirect("/");
+	    redirect(indexView);
 	  }
 
 }

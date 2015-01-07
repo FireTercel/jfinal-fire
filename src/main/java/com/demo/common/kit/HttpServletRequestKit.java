@@ -19,9 +19,9 @@ public class HttpServletRequestKit{
 	
 	public static void init(){
 		//打印客户机信息
-		//printHttpInfo();
+		printHttpInfo();
 		//打印客户机请求头信息
-		//printHttpHeadInfo();
+		printHttpHeadInfo();
 		
 		printHttpReqParams();
 	}
@@ -38,31 +38,31 @@ public class HttpServletRequestKit{
 		String gm=request.getMethod();
 		String qs=request.getQueryString();
 		
-		System.out.println("    ======   This will get 客户机信息  start ====  ");
+		print("    ======   This will get 客户机信息  start ====  ");
 		
-		System.out.println("URI:"+uri);
-		System.out.println("RemoteAddr:"+rad);
-		System.out.println("RemoteHost:"+rh);
-		System.out.println("RemoteUser:"+ru);
-		System.out.println("RemotePort:"+rp);
-		System.out.println("ContextPath:"+cp);
-		System.out.println("LocalAddr:"+la);
-		System.out.println("CharEncoding:"+ce);
-		System.out.println("Method:"+gm);
-		System.out.println("QueryString:"+qs);
-		System.out.println("    ======   This will get 客户机信息  end ====  ");
+		print("URI:"+uri);
+		print("RemoteAddr:"+rad);
+		print("RemoteHost:"+rh);
+		print("RemoteUser:"+ru);
+		print("RemotePort:"+rp);
+		print("ContextPath:"+cp);
+		print("LocalAddr:"+la);
+		print("CharEncoding:"+ce);
+		print("Method:"+gm);
+		print("QueryString:"+qs);
+		print("    ======   This will get 客户机信息  end ====  ");
 	}
 	
 	public static void printHttpHeadInfo(){
-		System.out.println("    ======   This will get 客户机请求头信息  start ====  ");
-		System.out.println(""+request.getHeader("method"));
+		print("    ======   This will get 客户机请求头信息  start ====  ");
+		print(""+request.getHeader("method"));
 		Enumeration<String> e=request.getHeaderNames();
 		while(e.hasMoreElements()){
 			String name=e.nextElement();
 			String value=request.getHeader(name);
-			System.out.println(name+":"+value);
+			print(name+":"+value);
 		}
-		System.out.println("    ======   This will get 客户机请求头信息  end ====  ");
+		print("    ======   This will get 客户机请求头信息  end ====  ");
 	}
 	
 	public static void printHttpReqParams(){

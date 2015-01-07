@@ -2,6 +2,11 @@
 <sqlRoot>
 
   <sqlGroup name="user">
+  	<sql id="findUserPageBySelect">SELECT `user`.* 
+    </sql>
+    <sql id="findUserPageByFrom">FROM `sec_user` user 
+    </sql>
+  
     <sql id="findInfoBySelect">SELECT `user`.*,`userInfo`.street street,`userInfo`.gender gender,
       `userInfo`.zip_code zip_code,`province`.name province,`city`.name city,`county`.name
       county,`userRole`.role_id role_id

@@ -46,7 +46,7 @@ public class DemoConfig extends JFinalConfig {
 		//me.setViewType(ViewType.FREE_MARKER);
 		me.setError401View("/page/index/_signin.ftl");
 		me.setError404View("/page/app/error404.html");
-		me.setError500View("/page/app/error500.html");
+		//me.setError500View("/page/app/error500.html");
 	} 
 	 
 	/**

@@ -28,8 +28,8 @@ public class UserValidator extends Validator {
 				addError("user_passwordMsg", "新密码不能为空");
 			}
 			//新密码格式
-			if (!passwordEmpty&&ValidateKit.isPassword(c.getPara("user.password"))) {
-				addError("user_passwordMsg", "密码为英文字母 、数字和下划线长度为5-18");
+			if (!passwordEmpty&&!ValidateKit.isPassword(c.getPara("user.password"))) {
+				addError("user_passwordMsg", "新密码为英文字母 、数字和下划线长度为5-18");
 			}
 			//新密码与重复密码
 			if (!passwordEmpty&&!c.getPara("user.password").equals(c.getPara("repassword"))) {
@@ -41,8 +41,8 @@ public class UserValidator extends Validator {
 				addError("user_passwordMsg", "原始密码不能为空！");
 			}
 			//旧密码格式
-			if(!oldpasswordEmpty&&ValidateKit.isPassword(c.getPara("oldpassword"))){
-				addError("user_passwordMsg", "密码为英文字母、数字和下划线长度为5-18");
+			if(!oldpasswordEmpty&&!ValidateKit.isPassword(c.getPara("oldpassword"))){
+				addError("user_passwordMsg", "旧密码为英文字母、数字和下划线长度为5-18");
 			}
 			
 			if (!oldpasswordEmpty) {
@@ -66,7 +66,11 @@ public class UserValidator extends Validator {
 	@Override
 	protected void handleError(Controller c) {
 		// TODO Auto-generated method stub
-		
+		c.keepModel(User.class);
+		c.keepPara();
+		if(getActionKey().equals("/user/updatePwd")){
+			c.forwardAction("/user/center");
+		}
 		
 	}
 
