@@ -38,11 +38,11 @@
 
             <div class="col-sm-8">
               <div class="input-group">
-                <input class="form-control" style="width: 20%;padding-right: 12px !important;" type="text" name="user.last_name"
-                       value="${(user.last_name)!}"
+                <input class="form-control" style="width: 20%;padding-right: 12px !important;" type="text" name="x.last_name"
+                       value="${(x.last_name)!}"
                        placeholder="姓">
-                <input class="form-control" style="width: 25%;padding-right: 12px !important;" type="text" name="user.first_name"
-                       value="${(user.first_name)!}"
+                <input class="form-control" style="width: 25%;padding-right: 12px !important;" type="text" name="x.first_name"
+                       value="${(x.first_name)!}"
                        placeholder="名">
               </div>
             </div>
@@ -51,7 +51,7 @@
             <label class="col-sm-2 control-label">联系电话:</label>
 
             <div class="col-sm-8">
-              <input class="form-control" style="width: 60%" type="text" name="user.phone" value="${(user.phone)!}"
+              <input class="form-control" style="width: 60%" type="text" name="x.phone" value="${(x.phone)!}"
                      placeholder="联系电话">
             </div>
           </div>
@@ -59,7 +59,7 @@
             <label class="col-sm-2 control-label">登录帐号:</label>
 
             <div class="col-sm-8">
-              <input class="form-control" style="width: 60%" type="text" name="user.username" value=""
+              <input class="form-control" style="width: 60%" type="text" name="x.username" value=""
                      placeholder="登录帐号">
             </div>
           </div>
@@ -67,7 +67,7 @@
             <label class="col-sm-2 control-label">密码:</label>
 
             <div class="col-sm-8">
-              <input class="form-control" style="width: 60%" type="password" name="user.password" value=""
+              <input class="form-control" style="width: 60%" type="password" name="x.password" value=""
                      placeholder="密码">
             </div>
           </div>
@@ -129,10 +129,10 @@
       <div class="modal-body">
         <form class="form-horizontal update" id="updateForm" role="form" action="/member/control" method="post">
           <input type="hidden" name="do" value="update">
-          <input type="hidden" name="user.id" value="">
+          <input type="hidden" name="x.id" value="">
 
           <div class="form-group">
-            <label class="col-sm-2 control-label">区域:</label>
+            <label class="col-sm-2 control-label">班组:</label>
 
             <div class="col-sm-8">
               <select name="region_id" select="${region_id!}">
@@ -146,7 +146,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="col-sm-2 control-label">支行:</label>
+            <label class="col-sm-2 control-label">职位:</label>
 
             <div class="col-sm-8">
               <select name="branch_id" select="${(branch_id)!}">
@@ -235,10 +235,10 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="confirmLabel"></h4>
+        <h4 class="modal-title" id="confirmLabel">删除</h4>
       </div>
       <div class="modal-body">
-        <p id="confirmContent"></p>
+        <p id="confirmContent">确认删除？</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>

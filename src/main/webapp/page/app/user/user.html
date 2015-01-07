@@ -1,6 +1,6 @@
 <#include "/page/common/_layout.html"/>
 <@layout activebar="user" html_title="用户管理">
-<div class="row">
+
 <div class="page-header">
 <h2>用户管理&nbsp;&nbsp;
 <a href="/admin/add">创建用户</a>
@@ -57,15 +57,17 @@
 					正常
 					</#if>
 				</td>
+				<@shiro.hasPermission name="P_USER_CONTROL">
 				<td style="text-align:left;">
+				&nbsp;&nbsp;<a class="update" username="${x.username}" userid="${x.id}" href="/admin/control" data-toggle="modal">修改</a>
 					<#if x.deleted_at??>
-						&nbsp;&nbsp;<a class="update" username="${x.username}" userid="${x.id}" href="#updateModal" data-toggle="modal">修改</a>
+						
 					<#else>
-						&nbsp;&nbsp;<a class="update" username="${x.username}" userid="${x.id}" href="#updateModal" data-toggle="modal">修改</a>
 						&nbsp;&nbsp;<a class="delete" userid="${x.id}" href="#confirmModal" data-toggle="modal" data-label="删除" data-content="确认删除？">删除</a>
 					</#if>
 					
 				</td>
+				</@shiro.hasPermission>
 			</tr>
 			</#list>
 		</tbody>
@@ -75,5 +77,5 @@
 
 
 <#include "/page/app/user/_model.html"/>
-</div>
+
 </@layout>
