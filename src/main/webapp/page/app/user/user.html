@@ -1,23 +1,47 @@
 <#include "/page/common/_layout.html"/>
 <@layout activebar="user" html_title="用户管理">
+<div class="row">
 <div class="page-header">
 <h2>用户管理&nbsp;&nbsp;
 <a href="/admin/add">创建用户</a>
 </h2>
 </div>
+<form class="form-inline branch" role="form" action="/admin/branch" method="get">
+	<div class="form-group">
+    <label class="control-label" style="text-align: left;width: 100px;">区域/支行:</label>
 
-  <div class="form-group">
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#saveModal">新用户</button>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#testModal">测试</button>
+    <select name="region_id" select="${region_id!}">
+      <#if regions?? && regions?size gt 0>
+        <#list regions as region>
+          <option value="${region.id}">${region.name}</option>
+        </#list>
+      </#if>
+      <option value="" selected="selected">请选择</option>
+    </select>
+    <select name="branch_id" select="${(branch_id)!}">
+      <option value="" selected="selected">请选择</option>
+    </select>
+
   </div>
-<div class="table_box">
+	<div class="form-group">
+    <button type="submit" class="btn btn-default">搜索</button>
+  </div>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<div class="form-group pull-right">
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#saveModal">新用户</button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#testModal">测试</button>
+  	</div>
+</form>
+  
+
 	<table class="table table-bordered table-hover">
 		<thead>
 			<tr>
 				<th width="10%">姓名</th>
 				<th width="10%">工号</th>
 				<th width="15%">联系电话</th>
-				<th width="12%">操作</th>
+				<th width="15%">状态</th>
+				<th width="10%">操作</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -26,8 +50,21 @@
 				<td style="text-align:left;">${x.full_name}</td>
 				<td style="text-align:left;">${x.username}</td>
 				<td style="text-align:left;">${x.phone!(0)}</td>
+				<td >
+					<#if x.deleted_at??>
+					已删除
+					<#else>
+					正常
+					</#if>
+				</td>
 				<td style="text-align:left;">
-					&nbsp;&nbsp;<a class="update" username="${x.username}" userid="${x.id}" href="#updateModal" data-toggle="modal">修改</a>
+					<#if x.deleted_at??>
+						&nbsp;&nbsp;<a class="update" username="${x.username}" userid="${x.id}" href="#updateModal" data-toggle="modal">修改</a>
+					<#else>
+						&nbsp;&nbsp;<a class="update" username="${x.username}" userid="${x.id}" href="#updateModal" data-toggle="modal">修改</a>
+						&nbsp;&nbsp;<a class="delete" userid="${x.id}" href="#confirmModal" data-toggle="modal" data-label="删除" data-content="确认删除？">删除</a>
+					</#if>
+					
 				</td>
 			</tr>
 			</#list>
@@ -35,8 +72,8 @@
 	</table>
 	<#include "/page/common/_paginate.html" />
 	<@paginate currentPage=userPage.pageNumber totalPage=userPage.totalPage actionUrl="/admin/" />
-</div>
+
 
 <#include "/page/app/user/_model.html"/>
-
+</div>
 </@layout>
