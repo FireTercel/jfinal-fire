@@ -25,30 +25,34 @@ public class AdminController extends Controller {
 	
 	public void add(){}
 	
-	
-	public void save(){
+	@Before(Tx.class)
+	public void control(){
 		
-		User user=getModel(User.class);
-		
-		user.save();
-		redirect("/admin");
-		/*keepModel(User.class);
+		keepModel(User.class);
 		User user=getModel(User.class);
 		User subUser=SubjectKit.getUser();
+		boolean result=false;
 		
-		HasherInfo passwordInfo = HasherKit.hash(user.getStr("password"), Hasher.DEFAULT);
-		user.set("password", passwordInfo.getHashResult());
-		user.set("hasher", passwordInfo.getHasher());
-		user.set("salt", passwordInfo.getSalt());
-		user.set("providername", subUser.get("username"));
+		HasherInfo hasher = HasherKit.hash(user.getStr("password"));
+		if(user.getStr("first_name")==null)
+			user.set("first_name", "");
 		
-		if (user.save()) {
+		user.set("password", hasher.getHashResult())
+		.set("salt", hasher.getSalt())
+		.set("hasher", hasher.getHasher().value())
+		.set("providername", subUser.getStr("username"))
+		.set("full_name", user.getStr("last_name") + "." + user.getStr("first_name"));
+		result=user.save();
+		
+        
+		
+		if (result) {
 			setAttr("state", "success");
-			return;
+			redirect("/admin");
 		} else{
 			setAttr("state", "failure");
 			redirect("/admin");
-		}*/
+		}
 	}
 	
 	public void query(){

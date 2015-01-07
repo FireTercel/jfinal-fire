@@ -6,23 +6,28 @@
 </h2>
 </div>
 
+  <div class="form-group">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#saveModal">新用户</button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#testModal">测试</button>
+  </div>
 <div class="table_box">
-	<table class="table table-striped">
-		<tbody>
+	<table class="table table-bordered table-hover">
+		<thead>
 			<tr>
-				<th width="4%">id</th>
-				<th width="35%">工号</th>
-				<th width="35%">联系方式</th>
+				<th width="10%">姓名</th>
+				<th width="10%">工号</th>
+				<th width="15%">联系电话</th>
 				<th width="12%">操作</th>
 			</tr>
-			
+		</thead>
+		<tbody>
 			<#list userPage.getList() as x>
 			<tr>
-				<td style="text-align:left;">${x.id}</td>
+				<td style="text-align:left;">${x.full_name}</td>
 				<td style="text-align:left;">${x.username}</td>
 				<td style="text-align:left;">${x.phone!(0)}</td>
 				<td style="text-align:left;">
-					&nbsp;&nbsp;<a href="/admin/query/${x.id}">查看</a>
+					&nbsp;&nbsp;<a class="update" username="${x.username}" userid="${x.id}" href="#updateModal" data-toggle="modal">修改</a>
 				</td>
 			</tr>
 			</#list>
@@ -31,5 +36,7 @@
 	<#include "/page/common/_paginate.html" />
 	<@paginate currentPage=userPage.pageNumber totalPage=userPage.totalPage actionUrl="/admin/" />
 </div>
+
+<#include "/page/app/user/_model.html"/>
 
 </@layout>
