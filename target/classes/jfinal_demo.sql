@@ -1,5 +1,5 @@
 ﻿# Host: localhost  (Version: 5.6.22-log)
-# Date: 2014-12-31 00:06:39
+# Date: 2015-01-08 13:47:45
 # Generator: MySQL-Front 5.3  (Build 4.187)
 
 /*!40101 SET NAMES utf8 */;
@@ -386,13 +386,13 @@ CREATE TABLE `sec_user` (
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='用户';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='用户';
 
 #
 # Data for table "sec_user"
 #
 
-INSERT INTO `sec_user` VALUES (1,'admin','shengmu','wangrenhui1990@gmail.com','15611434500','$shiro1$SHA-256$500000$iLqsOFPx5bjMGlB0JiNjQQ==$1cPTj9gyPGmYcKGQ8aw3shybrNF1ixdMCm/akFkn71o=','default_hasher','','','管理员','圣牧','圣牧.管理员','2014-12-16 12:22:31',NULL,NULL);
+INSERT INTO `sec_user` VALUES (1,'admin','shengmu','wangrenhui1990@gmail.com','15611434500','$shiro1$SHA-256$500000$3ItIifD+W35ZZbmNOQkLNw==$jNW2iv/XUa3lWABWHfdeUSFfYCmW8dM7Idm0cy0z048=','default_hasher','','','管理员','圣牧','圣牧.管理员','2014-12-16 12:22:31','2015-01-07 17:21:02',NULL),(2,'admin','shengmu',NULL,NULL,'$shiro1$SHA-256$500000$RJWqnqWrsycuV3rzzv/6zQ==$eqneO/BfFTq5WkTt0qxVjdoicvLEABq/PFe9K6gFbo4=','default_hasher','',NULL,'',NULL,'null.','2015-01-07 12:31:26',NULL,NULL),(3,'admin','admin',NULL,NULL,'$shiro1$SHA-256$500000$vXwG2l489/V9/KZS6gU8Aw==$OGCgtFxM+iAKWoeB6Q7ZqJQMV04I1n268i7di/9UrkQ=','default_hasher','',NULL,'',NULL,'null.','2015-01-08 10:27:32',NULL,NULL);
 
 #
 # Structure for table "sec_user_info"
@@ -412,6 +412,7 @@ CREATE TABLE `sec_user_info` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `deleted_at` timestamp NULL DEFAULT NULL,
+  `integral` int(11) DEFAULT '0' COMMENT '积分',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='用户信息';
 
@@ -419,7 +420,28 @@ CREATE TABLE `sec_user_info` (
 # Data for table "sec_user_info"
 #
 
-INSERT INTO `sec_user_info` VALUES (1,1,0,0,1,2,3,'人民大学',NULL,'2014-12-16 12:22:31',NULL,NULL);
+INSERT INTO `sec_user_info` VALUES (1,1,0,0,1,2,3,'人民大学',NULL,'2014-12-16 12:22:31',NULL,NULL,0);
+
+#
+# Structure for table "sec_user_integral"
+#
+
+DROP TABLE IF EXISTS `sec_user_integral`;
+CREATE TABLE `sec_user_integral` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) NOT NULL COMMENT '用户id',
+  `content` varchar(100) DEFAULT NULL COMMENT '内容',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `integral` int(11) DEFAULT '0' COMMENT '积分',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='积分信息';
+
+#
+# Data for table "sec_user_integral"
+#
+
 
 #
 # Structure for table "sec_user_role"

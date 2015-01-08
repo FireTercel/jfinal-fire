@@ -35,7 +35,7 @@ public class AdminController extends Controller {
 		User user=getModel(User.class);
 		User subUser=SubjectKit.getUser();
 		boolean result=false;
-		String todo=getPara("do");
+		//String todo=getPara("do");
 		HasherInfo hasher = HasherKit.hash(user.getStr("password"));
 		if(user.getStr("first_name")==null)
 			user.set("first_name", "三角");

@@ -2,37 +2,19 @@
 <@layout activebar="user" html_title="用户管理">
 
 <div class="page-header">
-<h2>用户管理&nbsp;&nbsp;
+<h3>用户管理&nbsp;&nbsp;
 <a href="/admin/add">创建用户</a>
-</h2>
+</h3>
 </div>
 <form class="form-inline branch" role="form" action="/admin/branch" method="get">
-	<div class="form-group">
-    <label class="control-label" style="text-align: left;width: 100px;">区域/支行:</label>
 
-    <select name="region_id" select="${region_id!}">
-      <#if regions?? && regions?size gt 0>
-        <#list regions as region>
-          <option value="${region.id}">${region.name}</option>
-        </#list>
-      </#if>
-      <option value="" selected="selected">请选择</option>
-    </select>
-    <select name="branch_id" select="${(branch_id)!}">
-      <option value="" selected="selected">请选择</option>
-    </select>
-
-  </div>
-	<div class="form-group">
-    <button type="submit" class="btn btn-default">搜索</button>
-  </div>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;
 	<div class="form-group pull-right">
     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#saveModal">新用户</button>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#testModal">测试</button>
   	</div>
 </form>
-  
+  &nbsp;
 
 	<table class="table table-bordered table-hover">
 		<thead>
