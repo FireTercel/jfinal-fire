@@ -3,7 +3,6 @@
 
 <div class="page-header">
 <h3>用户管理&nbsp;&nbsp;
-<a href="/admin/add">创建用户</a>
 </h3>
 </div>
 <form class="form-inline branch" role="form" action="/admin/branch" method="get">
@@ -27,13 +26,13 @@
 			</tr>
 		</thead>
 		<tbody>
-			<#list userPage.getList() as x>
+			<#list userPage.getList() as user>
 			<tr>
-				<td style="text-align:left;">${x.full_name}</td>
-				<td style="text-align:left;">${x.username}</td>
-				<td style="text-align:left;">${x.phone!(0)}</td>
+				<td style="text-align:left;">${user.full_name}</td>
+				<td style="text-align:left;">${user.username}</td>
+				<td style="text-align:left;">${user.phone!(0)}</td>
 				<td >
-					<#if x.deleted_at??>
+					<#if user.deleted_at??>
 					已删除
 					<#else>
 					正常
@@ -41,11 +40,11 @@
 				</td>
 				<@shiro.hasPermission name="P_USER_CONTROL">
 				<td style="text-align:left;">
-				&nbsp;&nbsp;<a class="update" username="${x.username}" userid="${x.id}" href="/admin/control" data-toggle="modal">修改</a>
-					<#if x.deleted_at??>
+				&nbsp;&nbsp;<a class="update" username="${user.username}" userid="${user.id}" href="/admin/edit/${user.id}" data-toggle="modal">修改</a>
+					<#if user.deleted_at??>
 						
 					<#else>
-						&nbsp;&nbsp;<a class="delete" userid="${x.id}" href="#confirmModal" data-toggle="modal" data-label="删除" data-content="确认删除？">删除</a>
+						&nbsp;&nbsp;<a class="delete" userid="${user.id}" href="#confirmModal" data-toggle="modal" data-label="删除" data-content="确认删除？">删除</a>
 					</#if>
 					
 				</td>

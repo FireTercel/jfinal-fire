@@ -28,6 +28,12 @@ public class AdminController extends Controller {
 	
 	public void add(){}
 	
+	/**
+	 * @description 添加新用户
+	 * 				添加sec_user基础数据
+	 * 				添加sec_user_role用户角色
+	 * 				添加sec_user_info用户拓展数据
+	 */
 	@Before(Tx.class)
 	public void control(){
 		
@@ -35,32 +41,31 @@ public class AdminController extends Controller {
 		User user=getModel(User.class);
 		User subUser=SubjectKit.getUser();
 		boolean result=false;
-		//String todo=getPara("do");
-		HasherInfo hasher = HasherKit.hash(user.getStr("password"));
-		if(user.getStr("first_name")==null)
-			user.set("first_name", "三角");
-		
-		user.set("password", hasher.getHashResult())
-		.set("salt", hasher.getSalt())
-		.set("hasher", hasher.getHasher().value())
-		.set("providername", subUser.getStr("username"))
-		.set("full_name", user.getStr("last_name") + "." + user.getStr("first_name"));
-		result=user.save();
-		
-		/*if(todo!=null){
-			if(todo.equals("delete")&&(user.getLong("id")!=null)){
-				user.set("deleted_at", new Timestamp(new Date().getTime())).update();
-			}else if(todo.equals("save")){
+		String todo=getPara("do");
+		System.out.println(todo);
+		if(todo!=null){
+			if(todo.equals("delete")&&user.getLong("id")!=null){
+				result = user.set("deleted_at", new Timestamp(new Date().getTime())).update();
+			}else if(todo.equals("save")&&user.getLong("id")!=null){
 				HasherInfo hasher = HasherKit.hash(user.getStr("password"));
 				if(user.getStr("first_name")==null)
-					user.set("first_name", "三角");
+					user.set("first_name", "三角").set("last_name", "中心");
 				
 				user.set("password", hasher.getHashResult())
 				.set("salt", hasher.getSalt())
 				.set("hasher", hasher.getHasher().value())
-				.set("providername", subUser.getStr("username"))
+				.set("providername", subUser.getStr("full_name"))
 				.set("full_name", user.getStr("last_name") + "." + user.getStr("first_name"));
 				result=user.save();
+			}else if(todo.equals("update")&&user.getLong("id")!=null){
+				
+			}
+		}
+		
+		
+		/*if(todo!=null){
+			if(todo.equals("delete")&&(user.getLong("id")!=null)){
+				user.set("deleted_at", new Timestamp(new Date().getTime())).update();
 			}else if(todo.equals("update")&&user.getLong("id")!=null){
 				user.removeNullValueAttrs();
 				Boolean reuse = getParaToBoolean("reuse");
@@ -72,10 +77,6 @@ public class AdminController extends Controller {
 			}
 		}*/
 		
-		
-		
-        
-		
 		if (result) {
 			setAttr("state", "success");
 			redirect("/admin");
@@ -83,6 +84,16 @@ public class AdminController extends Controller {
 			setAttr("state", "failure");
 			redirect("/admin");
 		}
+	}
+	
+	public void edit(){
+		User user=User.dao.findById(getParaToInt());
+		HasherInfo passwordInfo =HasherKit.hash(user.getStr("password"));
+		setAttr("user", User.dao.findById(getParaToInt()));
+	}
+	
+	public void update(){
+		
 	}
 	
 	public void query(){

@@ -1,3 +1,4 @@
+<!-- modal save -->
 <div class="modal fade" id="saveModal" tabindex="-1" role="dialog" aria-labelledby="saveLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -75,10 +76,32 @@
   </div>
 </div>
 
+<!-- Modal delete-->
+<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmLabel" aria-hidden="true">
+  <div class="modal-dialog">
+  <form class="form-horizontal save" id="saveForm" role="form" action="/admin/control" method="post">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="confirmLabel">删除</h4>
+      </div>
+      <div class="modal-body">
+      	<input type="hidden" name="do" value="delete">
+      	<input type="hidden" name="user.id" value="">
+        <p id="confirmContent">确认删除？</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        <button type="submit" class="btn btn-primary ok">确定</button>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>
 
 
 
-
+<!-- modal test -->
 <div class="modal fade" id="testModal" tabindex="-1" role="dialog">
 	<div class="modal-dialog">
 	<form>
@@ -100,6 +123,7 @@
 	</div>
 </div>
 
+<!-- modal update -->
 <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -111,30 +135,6 @@
         <form class="form-horizontal update" id="updateForm" role="form" action="/member/control" method="post">
           <input type="hidden" name="do" value="update">
           <input type="hidden" name="x.id" value="">
-
-          <div class="form-group">
-            <label class="col-sm-2 control-label">班组:</label>
-
-            <div class="col-sm-8">
-              <select name="region_id" select="${region_id!}">
-                <#if regions?? && regions?size gt 0>
-                  <#list regions as region>
-                    <option value="${region.id}">${region.name}</option>
-                  </#list>
-                </#if>
-                <option value="" selected="selected">请选择</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label">职位:</label>
-
-            <div class="col-sm-8">
-              <select name="branch_id" select="${(branch_id)!}">
-                <option value="" selected="selected">请选择</option>
-              </select>
-            </div>
-          </div>
 
           <div class="form-group">
             <label class="col-sm-2 control-label">姓名:</label>
@@ -210,22 +210,5 @@
   </div>
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="confirmLabel">删除</h4>
-      </div>
-      <div class="modal-body">
-        <p id="confirmContent">确认删除？</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-        <button type="button" class="btn btn-primary ok">确定</button>
-      </div>
-    </div>
-  </div>
-</div>
+
 
