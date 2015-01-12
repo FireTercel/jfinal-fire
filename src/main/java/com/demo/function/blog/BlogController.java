@@ -1,5 +1,8 @@
 package com.demo.function.blog;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import cn.dreampie.routebind.ControllerKey;
 
 import com.demo.common.kit.HttpServletRequestInterceptor;
@@ -14,9 +17,13 @@ import com.jfinal.core.Controller;
 @ControllerKey(value="/blog",path="/page/blog")
 @Before({BlogInterceptor.class,HttpServletRequestInterceptor.class})
 public class BlogController extends Controller {
+	
+	protected Logger logger=LoggerFactory.getLogger(getClass());
+	
 	public void index() {
 		
 		setAttr("blogPage", Blog.me.paginate(getParaToInt(0, 1), 10));
+		logger.warn("输出测试！");
 		render("blog.html");
 	}
 	
