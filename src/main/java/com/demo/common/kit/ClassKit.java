@@ -21,6 +21,8 @@ public class ClassKit {
 	private static final Class<?>[] DEFAULT_NULL_CLASS=new Class[0];
 	private static final Object[] DEFAULT_NULL_OBJECT=new Object[0];
 	
+	public static String contextPath=getContextPath();
+	
 	
 	private ClassKit(){
 		
@@ -30,7 +32,7 @@ public class ClassKit {
 	 * @author DONGYU
 	 *
 	 */
-	private static class ClassKitFactory{
+	public static class ClassKitFactory{
 		public static ClassKit instance=new ClassKit();
 	}
 	/**
@@ -39,6 +41,10 @@ public class ClassKit {
 	 */
 	public ClassKit getInstance(){
 		return ClassKitFactory.instance;
+	}
+	
+	private static String getContextPath(){
+		return System.getProperty("user.dir").toString();
 	}
 	/**
 	 * @描述 根据类路径 构建一个实例对象 

@@ -1,0 +1,6 @@
+<#if bool>
+${user!}
+<#else>
+${latestProduct.url!}
+${latestProduct.name!}
+</#if>
