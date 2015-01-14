@@ -118,3 +118,130 @@ java.lang.IllegalArgumentException: The controllerKey already exists: /dr
 	at com.jfinal.server.Scanner$1.run(Scanner.java:93)
 	at java.util.TimerThread.mainLoop(Timer.java:555)
 	at java.util.TimerThread.run(Timer.java:505)
+
+2015-01-14 14:21:25
+[ERROR]-[Thread: main]-[freemarker.log._Log4JLoggerFactory$Log4JLogger.error()]: Error executing FreeMarker template
+FreeMarker template error:
+This directive doesn't allow parameters.
+
+The failing instruction (FTL stack trace):
+----------
+==> @default.upper abc="1"  [in template "test.flt" at line 7, column 1]
+----------
+
+Java stack trace (for programmers):
+----------
+freemarker.template.TemplateModelException: [... Exception message was already printed; see it above ...]
+	at com.demo.common.freemarker.UpperDirective.execute(UpperDirective.java:21)
+	at freemarker.core.Environment.visit(Environment.java:341)
+	at freemarker.core.UnifiedCall.accept(UnifiedCall.java:136)
+	at freemarker.core.Environment.visit(Environment.java:265)
+	at freemarker.core.MixedContent.accept(MixedContent.java:93)
+	at freemarker.core.Environment.visit(Environment.java:265)
+	at freemarker.core.Environment.process(Environment.java:243)
+	at freemarker.template.Template.process(Template.java:277)
+	at com.demo.common.kit.FreemarkerKit.init(FreemarkerKit.java:37)
+	at com.demo.common.kit.FreemarkerKit.main(FreemarkerKit.java:51)
+
+2015-01-14 15:00:15
+[ERROR]-[Thread: main]-[freemarker.log._Log4JLoggerFactory$Log4JLogger.error()]: Error executing FreeMarker template
+FreeMarker template error:
+标签的参数不能为空！
+
+The failing instruction (FTL stack trace):
+----------
+==> @default.upper  [in template "test.flt" at line 7, column 1]
+----------
+
+Java stack trace (for programmers):
+----------
+freemarker.template.TemplateModelException: [... Exception message was already printed; see it above ...]
+	at com.demo.common.freemarker.UpperDirective.verifyParameters(UpperDirective.java:52)
+	at com.demo.common.freemarker.UpperDirective.execute(UpperDirective.java:76)
+	at freemarker.core.Environment.visit(Environment.java:341)
+	at freemarker.core.UnifiedCall.accept(UnifiedCall.java:136)
+	at freemarker.core.Environment.visit(Environment.java:265)
+	at freemarker.core.MixedContent.accept(MixedContent.java:93)
+	at freemarker.core.Environment.visit(Environment.java:265)
+	at freemarker.core.Environment.process(Environment.java:243)
+	at freemarker.template.Template.process(Template.java:277)
+	at com.demo.common.kit.FreemarkerKit.init(FreemarkerKit.java:37)
+	at com.demo.common.kit.FreemarkerKit.main(FreemarkerKit.java:51)
+
+2015-01-14 15:38:01
+[ERROR]-[Thread: main]-[freemarker.log._Log4JLoggerFactory$Log4JLogger.error()]: Error executing FreeMarker template
+FreeMarker template error:
+The following has evaluated to null or missing:
+==> repeat  [in template "test.flt" at line 11, column 3]
+
+Tip: If the failing expression is known to be legally null/missing, either specify a default value with myOptionalVar!myDefault, or use <#if myOptionalVar??>when-present<#else>when-missing</#if>. (These only cover the last step of the expression; to cover the whole expression, use parenthessis: (myOptionVar.foo)!myDefault, (myOptionVar.foo)??
+
+The failing instruction (FTL stack trace):
+----------
+==> @repeat count="5" hr=true  [in template "test.flt" at line 11, column 1]
+----------
+
+Java stack trace (for programmers):
+----------
+freemarker.core.InvalidReferenceException: [... Exception message was already printed; see it above ...]
+	at freemarker.core.InvalidReferenceException.getInstance(InvalidReferenceException.java:98)
+	at freemarker.core.UnifiedCall.accept(UnifiedCall.java:144)
+	at freemarker.core.Environment.visit(Environment.java:265)
+	at freemarker.core.MixedContent.accept(MixedContent.java:93)
+	at freemarker.core.Environment.visit(Environment.java:265)
+	at freemarker.core.Environment.process(Environment.java:243)
+	at freemarker.template.Template.process(Template.java:277)
+	at com.demo.common.kit.FreemarkerKit.init(FreemarkerKit.java:36)
+	at com.demo.common.kit.FreemarkerKit.main(FreemarkerKit.java:54)
+
+2015-01-14 15:38:34
+[ERROR]-[Thread: main]-[freemarker.log._Log4JLoggerFactory$Log4JLogger.error()]: Error executing FreeMarker template
+FreeMarker template error:
+The following has evaluated to null or missing:
+==> repeat  [in template "test.flt" at line 11, column 3]
+
+Tip: If the failing expression is known to be legally null/missing, either specify a default value with myOptionalVar!myDefault, or use <#if myOptionalVar??>when-present<#else>when-missing</#if>. (These only cover the last step of the expression; to cover the whole expression, use parenthessis: (myOptionVar.foo)!myDefault, (myOptionVar.foo)??
+
+The failing instruction (FTL stack trace):
+----------
+==> @repeat count=5 hr=true  [in template "test.flt" at line 11, column 1]
+----------
+
+Java stack trace (for programmers):
+----------
+freemarker.core.InvalidReferenceException: [... Exception message was already printed; see it above ...]
+	at freemarker.core.InvalidReferenceException.getInstance(InvalidReferenceException.java:98)
+	at freemarker.core.UnifiedCall.accept(UnifiedCall.java:144)
+	at freemarker.core.Environment.visit(Environment.java:265)
+	at freemarker.core.MixedContent.accept(MixedContent.java:93)
+	at freemarker.core.Environment.visit(Environment.java:265)
+	at freemarker.core.Environment.process(Environment.java:243)
+	at freemarker.template.Template.process(Template.java:277)
+	at com.demo.common.kit.FreemarkerKit.init(FreemarkerKit.java:36)
+	at com.demo.common.kit.FreemarkerKit.main(FreemarkerKit.java:54)
+
+2015-01-14 15:39:49
+[ERROR]-[Thread: main]-[freemarker.log._Log4JLoggerFactory$Log4JLogger.error()]: Error executing FreeMarker template
+FreeMarker template error:
+The following has evaluated to null or missing:
+==> repeat  [in template "test.flt" at line 11, column 3]
+
+Tip: If the failing expression is known to be legally null/missing, either specify a default value with myOptionalVar!myDefault, or use <#if myOptionalVar??>when-present<#else>when-missing</#if>. (These only cover the last step of the expression; to cover the whole expression, use parenthessis: (myOptionVar.foo)!myDefault, (myOptionVar.foo)??
+
+The failing instruction (FTL stack trace):
+----------
+==> @repeat count=3 hr=true  [in template "test.flt" at line 11, column 1]
+----------
+
+Java stack trace (for programmers):
+----------
+freemarker.core.InvalidReferenceException: [... Exception message was already printed; see it above ...]
+	at freemarker.core.InvalidReferenceException.getInstance(InvalidReferenceException.java:98)
+	at freemarker.core.UnifiedCall.accept(UnifiedCall.java:144)
+	at freemarker.core.Environment.visit(Environment.java:265)
+	at freemarker.core.MixedContent.accept(MixedContent.java:93)
+	at freemarker.core.Environment.visit(Environment.java:265)
+	at freemarker.core.Environment.process(Environment.java:243)
+	at freemarker.template.Template.process(Template.java:277)
+	at com.demo.common.kit.FreemarkerKit.init(FreemarkerKit.java:36)
+	at com.demo.common.kit.FreemarkerKit.main(FreemarkerKit.java:54)

@@ -6,6 +6,8 @@ import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.demo.common.freemarker.DefaultTag;
+
 import freemarker.template.Configuration;
 import freemarker.template.DefaultObjectWrapper;
 import freemarker.template.Template;
@@ -14,7 +16,7 @@ public class FreemarkerKit {
 	
 	private static Configuration config=new Configuration();
 	
-	public Configuration getConfiguration(){
+	public static Configuration getConfiguration(){
 		return config;
 	}
 	
@@ -25,7 +27,7 @@ public class FreemarkerKit {
 		Map<String,Object> root=new HashMap<>();
 		root.put("user", "Fire");
 		Map<String, Object> latest=new HashMap<>();
-		latest.put("url", "www.baidu.com");
+		latest.put("url", "www.github.com");
 		latest.put("name", "Joe");
 		root.put("latestProduct", latest);
 		root.put("bool", false);
@@ -36,13 +38,21 @@ public class FreemarkerKit {
 		
 	}
 	
+	/**
+	 * @描述 自定义标签添加入标签库
+	 */
+	public static void initSharedVar(){
+		getConfiguration().setSharedVariable("default", new DefaultTag());
+		
+	}
+	
 	public static void main(String [] args) {
 		//System.out.println(System.getProperty("user.dir"));   //该文件项目路径
 		//System.out.println(FreemarkerKit.class.getResource("/")); //Class文件所在路径  
 		try {
+			FreemarkerKit.initSharedVar();
 			FreemarkerKit.init();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

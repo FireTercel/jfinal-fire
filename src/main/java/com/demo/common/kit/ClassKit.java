@@ -235,31 +235,12 @@ public class ClassKit {
 				if(method.getName().equals(methodName)){
 					println("Method:\t"+method.getName());
 					Class[] methodTypes=method.getParameterTypes();
-					if(methodTypes.length!=args.length){
-						println(method.getName()+" ：的形参数量与实参数量不一致！");
-					}else{
-						Class[] argTypes=new Class[args.length];
-						for(int i=0;i<argTypes.length;i++){
-							argTypes[i]=args[i].getClass();
-						}
-						boolean isEquals=true;
-						for(int i=0;i<argTypes.length;i++){
-							for(int j=0;j<methodTypes.length;j++){
-								if(i==j){
-									if(argTypes[i].getSimpleName().equals(methodTypes[j].getSimpleName()))
-										break;
-									else{
-										isEquals=false;
-										println(method.getName()+" ：的形参类型与实参类型不一致！");
-										break;
-									}
-								}else
-									continue;
-							}
-						}
-						if(isEquals){
-							method.invoke(instance, args);
-						}
+					Class[] argTypes=new Class[args.length];
+					for(int i=0;i<argTypes.length;i++){
+						argTypes[i]=args[i].getClass();
+					}
+					if(isClassesEquals(methodTypes,argTypes)){
+						method.invoke(instance, args);
 					}
 				}
 			}
@@ -277,7 +258,31 @@ public class ClassKit {
 		return instance;
 		
 	}
-	
+	/**
+	 * 判断两个Class数组类型是否相同，无法排除基本数据类型 和其封装类型
+	 * @param clazz1
+	 * @param clazz2
+	 * @return
+	 */
+	public static boolean isClassesEquals(Class[] clazz1,Class[] clazz2){
+		if(clazz1.length!=clazz2.length){
+			println("数组内数量不一致！");
+			return false;
+		}else{
+			for(int i=0;i<clazz2.length;i++){
+				for(int j=i;j<clazz1.length;){
+					if (clazz2[i].getSimpleName().equals(
+							clazz1[j].getSimpleName()))
+						break;
+					else {
+						println("第 <"+i+"> 个类型不一致！");
+						return false;
+					}
+				}
+			}
+			return true;
+		}
+	}
 	
 	
 	/**
@@ -310,7 +315,6 @@ public class ClassKit {
 		Object[] obj=new Object[]{"test",20};
 		Man man=(Man)clazzKit.init("com.demo.common.reflect.model.Man","setAll",obj);
 		println(man.toString());
-		
 		
 	}
 
