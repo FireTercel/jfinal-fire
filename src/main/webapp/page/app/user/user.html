@@ -40,7 +40,8 @@
 				</td>
 				<@shiro.hasPermission name="P_USER_CONTROL">
 				<td style="text-align:left;">
-				&nbsp;&nbsp;<a class="update" username="${user.username}" userid="${user.id}" href="/admin/edit/${user.id}" data-toggle="modal">修改</a>
+				&nbsp;&nbsp;<a class="update" username="${user.username}" userid="${user.id}" href="/admin/edit/${user.id}" data-toggle="modal">修改</a> 
+						    <!-- <a class="update" username="${user.username}" userid="${user.id}" href="#updateModal" data-toggle="modal">修改</a> -->
 					<#if user.deleted_at??>
 						
 					<#else>

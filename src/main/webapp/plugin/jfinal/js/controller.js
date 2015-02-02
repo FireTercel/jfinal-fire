@@ -17,3 +17,6 @@ define(['app', 'bootstrap-multiselect', 'member.service'], function() {
     return App.Controller.MemberController.init();
   });
 });
+function test(){
+	var id
+}

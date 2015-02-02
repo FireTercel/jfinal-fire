@@ -99,5 +99,11 @@ public class AdminController extends Controller {
 	public void query(){
 		
 	}
+	
+	public void test(){
+		String todo=getPara("do");
+		System.out.println(todo);
+		redirect("/admin");
+	}
 
 }
