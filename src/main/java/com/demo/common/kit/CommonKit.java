@@ -29,6 +29,7 @@ import org.apache.commons.lang3.text.WordUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.apache.commons.lang3.time.StopWatch;
+import org.junit.Test;
 
 /**
  * @描述 使用common lang3 包 的测试类
@@ -97,17 +98,27 @@ public class CommonKit {
         System.out.println(date);
     }
  
+    /**
+     * SerializationUtils 将对象装换为byte类型 以及 重置
+     */
+
     public void serializationUtilsDemo() {
         System.out.println("*SerializationUtils**");
         Date date = new Date();
         byte[] bytes = SerializationUtils.serialize(date);
         System.out.println(ArrayUtils.toString(bytes));
+        String string="firetercel";
+        byte[] bytestr=SerializationUtils.serialize(string);
+        System.out.println(ArrayUtils.toString(bytestr));
         System.out.println(date);
  
         Date reDate = (Date) SerializationUtils.deserialize(bytes);
         System.out.println(reDate);
         System.out.println(ObjectUtils.equals(date, reDate));
         System.out.println(date == reDate);
+        
+        String reString=(String)SerializationUtils.deserialize(bytestr);
+        System.out.println(reString);
  
         FileOutputStream fos = null;
         FileInputStream fis = null;
@@ -132,10 +143,14 @@ public class CommonKit {
  
     }
  
+    /**
+     * RandomStringUtils 
+     */
+
     public void randomStringUtilsDemo() {
         System.out.println("**RandomStringUtilsDemo**");
         System.out.println("生成指定长度的随机字符串,好像没什么用.");
-        System.out.println(RandomStringUtils.random(500));
+        System.out.println(RandomStringUtils.random(500));//乱码
  
         System.out.println("在指定字符串中生成长度为n的随机字符串.");
         System.out.println(RandomStringUtils.random(5, "abcdefghijk"));
@@ -146,6 +161,10 @@ public class CommonKit {
  
     }
  
+    /**
+     * 文章缩略工具可以用到
+     */
+    @Test
     public void stringUtilsDemo() {
         System.out.println("**StringUtilsDemo**");
         System.out.println("将字符串重复n次，将文字按某宽度居中，将字符串数组用某字符串连接.");
@@ -157,8 +176,8 @@ public class CommonKit {
         System.out.println(head);
  
         System.out.println("缩短到某长度,用...结尾.");
-        System.out.println(StringUtils.abbreviate("The quick brown fox jumps over the lazy dog.", 10));
-        System.out.println(StringUtils.abbreviate("The quick brown fox jumps over the lazy dog.", 15, 10));
+        System.out.println(StringUtils.abbreviate("The quick brown fox jumps over the lazy dog.", 10));//10
+        System.out.println(StringUtils.abbreviate("The quick brown fox jumps over the lazy dog.", 15, 10));//15为从第十五个字符开始，10为总长度
  
         System.out.println("返回两字符串不同处索引号.");
         System.out.println(StringUtils.indexOfDifference("aaabc", "aaacc"));
@@ -367,12 +386,13 @@ public class CommonKit {
     /**
      * @param args
      */
-    public static void main(String[] args) {
-    	CommonKit langDemo = new CommonKit();
+    
+    //public static void main(String[] args) {
+    	//CommonKit langDemo = new CommonKit();
  
         //langDemo.charSetDemo();
         //langDemo.charSetUtilsDemo();
-        langDemo.objectUtilsDemo();
+        //langDemo.objectUtilsDemo();
         //langDemo.serializationUtilsDemo();
         //langDemo.randomStringUtilsDemo();
         //langDemo.stringUtilsDemo();
@@ -384,6 +404,6 @@ public class CommonKit {
         //langDemo.dateFormatUtilsDemo();
         //        langDemo.validateDemo();
 //        langDemo.wordUtilsDemo();
-    }
+    //}
 
 }
