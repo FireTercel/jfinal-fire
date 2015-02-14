@@ -1,8 +1,12 @@
 package com.demo.function.bootstrap;
 
+import java.io.File;
+
 import cn.dreampie.routebind.ControllerKey;
 
 import com.jfinal.core.Controller;
+import com.jfinal.kit.PathKit;
+import com.jfinal.upload.UploadFile;
 
 /**
  * 用于指向BootStrap例子的控制器。
@@ -28,6 +32,20 @@ public class BootstrapController extends Controller {
 	}
 	
 	public void school(){
+		
+		render("school.html");
+	}
+	
+	public void upfile(){
+		UploadFile uploadFile=getFile("upfile","upupuper");
+		uploadFile.getFile().renameTo(new File(getPara("name")+""));
+		String name=getPara("name");
+		System.out.println(name);
+		boolean success=false;
+		if (name!=null&&uploadFile!=null) {
+			success=true;
+			setAttr("success", success);
+		}
 		render("school.html");
 	}
 
