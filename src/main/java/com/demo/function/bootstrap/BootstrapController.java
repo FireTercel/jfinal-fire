@@ -26,5 +26,9 @@ public class BootstrapController extends Controller {
 		//URL:http://bookshadow.com/weblog/2014/05/17/jquery-bootstrap-tree-list/
 		render("tree.html");
 	}
+	
+	public void school(){
+		render("school.html");
+	}
 
 }
