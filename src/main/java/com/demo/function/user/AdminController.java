@@ -5,17 +5,12 @@ import java.util.Date;
 
 import cn.dreampie.routebind.ControllerKey;
 import cn.dreampie.shiro.core.SubjectKit;
-import cn.dreampie.shiro.hasher.Hasher;
 import cn.dreampie.shiro.hasher.HasherInfo;
 import cn.dreampie.shiro.hasher.HasherKit;
 
 import com.demo.function.user.model.User;
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
-import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
-import com.jfinal.plugin.activerecord.Db;
-import com.jfinal.plugin.activerecord.Page;
-import com.jfinal.plugin.activerecord.Record;
 import com.jfinal.plugin.activerecord.tx.Tx;
 
 @ControllerKey(value="/admin",path="/page/app/user")
@@ -25,6 +20,7 @@ public class AdminController extends Controller {
 		setAttr("userPage", User.dao.getUserPage(getParaToInt(0, 1), 10));
 		render("user.html");
 	}
+	
 	
 	public void add(){}
 	

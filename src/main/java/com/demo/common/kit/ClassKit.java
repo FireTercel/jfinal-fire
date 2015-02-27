@@ -5,9 +5,13 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.Date;
+
+import org.joda.time.DateTime;
 
 import com.demo.common.reflect.model.Man;
-import com.demo.common.reflect.model.Woman;
 
 
 /**
@@ -16,7 +20,6 @@ import com.demo.common.reflect.model.Woman;
  *
  */
 public class ClassKit {
-	
 	private static Constructor<?> constructor;
 	private static final Class<?>[] DEFAULT_NULL_CLASS=new Class[0];
 	private static final Object[] DEFAULT_NULL_OBJECT=new Object[0];
@@ -39,7 +42,7 @@ public class ClassKit {
 	 * @描述 获得单例对象的接口
 	 * @return ClassKit实例
 	 */
-	public ClassKit getInstance(){
+	public static ClassKit getInstance(){
 		return ClassKitFactory.instance;
 	}
 	
@@ -234,8 +237,8 @@ public class ClassKit {
 			for (Method method : methods) {
 				if(method.getName().equals(methodName)){
 					println("Method:\t"+method.getName());
-					Class[] methodTypes=method.getParameterTypes();
-					Class[] argTypes=new Class[args.length];
+					Class<?>[] methodTypes=method.getParameterTypes();
+					Class<?>[] argTypes=new Class[args.length];
 					for(int i=0;i<argTypes.length;i++){
 						argTypes[i]=args[i].getClass();
 					}
@@ -264,18 +267,18 @@ public class ClassKit {
 	 * @param clazz2
 	 * @return
 	 */
-	public static boolean isClassesEquals(Class[] clazz1,Class[] clazz2){
+	public static boolean isClassesEquals(Class<?>[] clazz1,Class<?>[] clazz2){
 		if(clazz1.length!=clazz2.length){
 			println("数组内数量不一致！");
 			return false;
 		}else{
 			for(int i=0;i<clazz2.length;i++){
 				for(int j=i;j<clazz1.length;){
-					if (clazz2[i].getSimpleName().equals(
-							clazz1[j].getSimpleName()))
+					if (clazz2[i].getSimpleName().equals(clazz1[j].getSimpleName())){
 						break;
+					}
 					else {
-						println("第 <"+i+"> 个类型不一致！");
+						println("第 <"+(i+1)+"> 个类型不一致！");
 						return false;
 					}
 				}
@@ -283,6 +286,29 @@ public class ClassKit {
 			return true;
 		}
 	}
+	/**  
+	  * 判断一个类是否为基本数据类型。  
+	  * @param clazz 要判断的类。  
+	  * @return true 表示为基本数据类型。  
+	  */ 
+	 private static boolean isBaseDataType(Class<?> clazz) throws Exception {   
+		return ( 
+	         clazz.equals(String.class) ||   
+	         clazz.equals(Integer.class)||   
+	         clazz.equals(Byte.class) ||   
+	         clazz.equals(Long.class) ||   
+	         clazz.equals(Double.class) ||   
+	         clazz.equals(Float.class) ||   
+	         clazz.equals(Character.class) ||   
+	         clazz.equals(Short.class) ||   
+	         clazz.equals(BigDecimal.class) ||   
+	         clazz.equals(BigInteger.class) ||   
+	         clazz.equals(Boolean.class) ||   
+	         clazz.equals(Date.class) ||   
+	         clazz.equals(DateTime.class) ||
+	         clazz.isPrimitive()   
+	     );   
+	 }
 	
 	
 	/**
@@ -310,12 +336,11 @@ public class ClassKit {
 	}
 	
 	public static void main(String [] args){
-		ClassKit clazzKit=ClassKit.ClassKitFactory.instance;
+		ClassKit clazzKit=ClassKit.getInstance();
 		//clazzKit.init();
-		Object[] obj=new Object[]{"test",20};
+		Object[] obj=new Object[]{"TEST",20};
 		Man man=(Man)clazzKit.init("com.demo.common.reflect.model.Man","setAll",obj);
 		println(man.toString());
-		
 	}
 
 }

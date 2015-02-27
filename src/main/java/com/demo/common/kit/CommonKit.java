@@ -31,6 +31,7 @@ import org.apache.commons.lang3.time.DateUtils;
 import org.apache.commons.lang3.time.StopWatch;
 import org.junit.Test;
 
+
 /**
  * @描述 使用common lang3 包 的测试类
  * @author Administrator
@@ -164,7 +165,7 @@ public class CommonKit {
     /**
      * 文章缩略工具可以用到
      */
-    @Test
+
     public void stringUtilsDemo() {
         System.out.println("**StringUtilsDemo**");
         System.out.println("将字符串重复n次，将文字按某宽度居中，将字符串数组用某字符串连接.");
@@ -180,12 +181,14 @@ public class CommonKit {
         System.out.println(StringUtils.abbreviate("The quick brown fox jumps over the lazy dog.", 15, 10));//15为从第十五个字符开始，10为总长度
  
         System.out.println("返回两字符串不同处索引号.");
+        //两字符串不同处，返回第二个字符串不同的字符部分
         System.out.println(StringUtils.indexOfDifference("aaabc", "aaacc"));
  
         System.out.println("返回两字符串不同处开始至结束.");
         System.out.println(StringUtils.difference("aaabcde", "aaaccde"));
  
         System.out.println("截去字符串为以指定字符串结尾的部分.");
+        //如果字符串尾端不包含指定指定字符串，则截去该字符串
         System.out.println(StringUtils.chomp("aaabcde", "de"));
  
         System.out.println("检查一字符串是否为另一字符串的子集.");
@@ -217,6 +220,7 @@ public class CommonKit {
         System.out.println(StringUtils.isNumeric("123"));
     }
  
+
     public void systemUtilsDemo() {
         System.out.println(genHeader("SystemUtilsDemo"));
         System.out.println("获得系统文件分隔符.");
@@ -234,7 +238,8 @@ public class CommonKit {
         System.out.println("获得java厂商.");
         System.out.println(SystemUtils.JAVA_VENDOR);
     }
- 
+    
+
     public void classUtilsDemo() {
         System.out.println(genHeader("ClassUtilsDemo"));
         System.out.println("获取类实现的所有接口.");
@@ -254,6 +259,7 @@ public class CommonKit {
         System.out.println(ClassUtils.isAssignable(Object.class, Date.class));
     }
  
+    @Test
     public void stringEscapeUtilsDemo() {
         System.out.println(genHeader("StringEcsapeUtils"));
         System.out.println("转换特殊字符.");
@@ -343,7 +349,7 @@ public class CommonKit {
         StopWatch sw = new StopWatch();
         sw.start();
  
-        for (Iterator iterator = DateUtils.iterator(new Date(), DateUtils.RANGE_WEEK_CENTER); iterator.hasNext();) {
+        for (Iterator<?> iterator = DateUtils.iterator(new Date(), DateUtils.RANGE_WEEK_CENTER); iterator.hasNext();) {
             Calendar cal = (Calendar) iterator.next();
             System.out.println(DateFormatUtils.format(cal.getTime(), "yy-MM-dd HH:mm"));
         }

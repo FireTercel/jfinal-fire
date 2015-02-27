@@ -37,12 +37,14 @@ public class BootstrapController extends Controller {
 	}
 	
 	public void upfile(){
-		UploadFile uploadFile=getFile("upfile","upupuper");
-		uploadFile.getFile().renameTo(new File(getPara("name")+""));
-		String name=getPara("name");
-		System.out.println(name);
+		UploadFile uploadFile=getFile("upfile");
+		//String name=getPara("name");
+		uploadFile.getFile().renameTo(new File("dongyu.log"));
+		
+		//System.out.println(name);
 		boolean success=false;
-		if (name!=null&&uploadFile!=null) {
+		//if (name!=null&&uploadFile!=null) {
+		if (uploadFile!=null) {
 			success=true;
 			setAttr("success", success);
 		}
