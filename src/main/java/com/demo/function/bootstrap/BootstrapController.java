@@ -2,6 +2,9 @@ package com.demo.function.bootstrap;
 
 import java.io.File;
 
+import javax.servlet.http.HttpServletResponse;
+
+import cn.dreampie.resource.HttpResource;
 import cn.dreampie.routebind.ControllerKey;
 
 import com.jfinal.core.Controller;
@@ -49,6 +52,15 @@ public class BootstrapController extends Controller {
 			setAttr("success", success);
 		}
 		render("school.html");
+	}
+	
+	public void ajax(){
+		String name=getPara("pname");
+		String uname=getPara("uname");
+		HttpServletResponse resp=getResponse();
+		setAttr("pname", name);
+		setAttr("uname", uname);
+		render("/ajax/index.html");
 	}
 
 }
